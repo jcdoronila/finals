@@ -1,0 +1,39 @@
+block main
+
+footer.site-footer
+  .text-center
+    | 2018 - Team A-Fitness
+
+script(src='../../assets/js/jquery.js')
+script(src='../../assets/js/jquery-ui-1.9.2.custom.min.js')
+script(src='../../assets/js/fullcalendar/fullcalendar.min.js')
+script(src='../../assets/js/bootstrap.min.js')
+script.include(src='../../assets/js/jquery.dcjqaccordion.2.7.js')
+//- script(src='../../assets/js/jquery-1.8.3.min.js')
+script(src='../../assets/js/jquery-ui.min.js')
+script(src='../../assets/js/jquery.scrollTo.min.js')
+script(src='../../assets/js/jquery.nicescroll.js')
+script(src='../../assets/js/common-scripts.js')
+script(src='../../assets/js/calendar-conf-events.js')
+script(src='../../assets/js/gritter/js/jquery.gritter.js')
+script(src='../../assets/js/gritter-conf.js')
+script(src='../../assets/js/bootstrap-switch.js')
+script(src='../../assets/js/jquery.timepicker.min.js')
+script(src='../../assets/js/sparkline-chart.js')
+script(src='../../assets/js/multiple-select.js')
+
+script.
+  $(document).ready(function () {
+  $('[data-toggle="popover"]').popover();
+  $(".date").datepicker({
+  changeMonth: true,
+  changeYear: true
+  });
+  $('.time').timepicker({
+  'minTime': '8:00am',
+  'maxTime': '10:00pm',
+  });
+  $('.ms').multipleSelect();
+  $("select.styled").customSelect();
+  });
+
