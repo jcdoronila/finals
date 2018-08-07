@@ -3,13 +3,13 @@ html(lang='en')
   head
     meta(charset='utf-8')
     title A-Team Fitness
-    link(rel='icon', type='image/png', href='images/muscle.png')
-    link(rel='stylesheet', href='css/bootstrap.min.css')
-    link(rel='stylesheet', href='css/animate.min.css')
-    link(rel='stylesheet', href='css/et-line-font.css')
-    link(rel='stylesheet', href='css/font-awesome.min.css')
-    link(rel='stylesheet', href='css/vegas.min.css')
-    link(rel='stylesheet', href='css/style.css')
+    link(rel='icon', type='image/png', href='../../../../landing/images/muscle.png')
+    link(rel='stylesheet', href='../../../../landing/css/bootstrap.min.css')
+    link(rel='stylesheet', href='../../../../landing/css/animate.min.css')
+    link(rel='stylesheet', href='../../../../landing/css/et-line-font.css')
+    link(rel='stylesheet', href='../../../../landing/css/font-awesome.min.css')
+    link(rel='stylesheet', href='../../../../landing/css/vegas.min.css')
+    link(rel='stylesheet', href='../../../../landing/css/style.css')
     link(href='https://fonts.googleapis.com/css?family=Rajdhani:400,500,700', rel='stylesheet', type='text/css')
   body
     // preloader section
@@ -51,7 +51,7 @@ html(lang='en')
         .row
           .col-md-6.col-sm-12
             img.img-responsive.wow.fadeInUp(style='-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));\
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));', src='images/muscle.png', alt='About')
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));', src='../../../../landing/images/muscle.png', alt='About')
           .col-md-6.col-sm-12
             .about-thumb
               .section-title
@@ -83,7 +83,8 @@ html(lang='en')
               | Copyright © 2018 HJRD
               br
               |  Designed by
-              a(rel='nofollow', href='#', target='_parent') HJRD
+              a(rel='nofollow', href='#', target='_parent') 
+              | HJRD
             ul.social-icon
               li
                 a.fa.fa-facebook.wow.bounceIn(href='#', data-wow-delay='0.9s')
@@ -233,18 +234,18 @@ html(lang='en')
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
             h2(style='color:black; margin-left:30px;') Login
-          form(action='POST', method='')
+          form(action='/login', method='post')
             .modal-body
               .container-fluid
                 .row
                   .col-md-12
                     .form-group
                       label.control-label Username
-                      input.form-control(type='text')
+                      input.form-control(type='text', name='userID')
                   .col-md-12
                     .form-group
                       label.control-label Password
-                      input.form-control(type='password')
+                      input.form-control(type='password', name='password')
                 center
                   button#submit.btn.btn-primary(type='submit') Log in
     #success.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
@@ -264,15 +265,15 @@ html(lang='en')
     a.go-top(href='#back-top')
       i.fa.fa-angle-up
     // javscript js
-    script(src='js/jquery.js')
-    script(src='js/bootstrap.min.js')
-    script(src='js/vegas.min.js')
-    script(src='js/wow.min.js')
-    script(src='js/smoothscroll.js')
-    script(src='js/custom.js')
-    link(rel='stylesheet', type='text/css', href='js/gritter/css/jquery.gritter.css')
-    script(type='text/javascript', src='js/gritter/js/jquery.gritter.js')
-    script(type='text/javascript', src='js/gritter-conf.js')
+    script(src='../../../../landing/js/jquery.js')
+    script(src='../../../../landing/js/bootstrap.min.js')
+    script(src='../../../../landing/js/vegas.min.js')
+    script(src='../../../../landing/js/wow.min.js')
+    script(src='../../../../landing/js/smoothscroll.js')
+    script(src='../../../../landing/js/custom.js')
+    link(rel='stylesheet', type='text/css', href='../../../../landing/js/gritter/css/jquery.gritter.css')
+    script(type='text/javascript', src='../../../../landing/js/gritter/js/jquery.gritter.js')
+    script(type='text/javascript', src='../../../../landing/js/gritter-conf.js')
     script.
       $(document).ready(function () {
       $("#login").on("show", function () {
