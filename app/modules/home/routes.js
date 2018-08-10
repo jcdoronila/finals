@@ -6,18 +6,6 @@ var authMiddleware = require('../auth/middlewares/auth');
 router.use(authMiddleware.hasAuth);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 //insert staff
 var indexController = require('./controllers/index');
 router.get('/', indexController);
