@@ -2424,3 +2424,7 @@ button{
 	border-radius: 50%;
 	background: white;
 }
+
+a {
+    cursor:pointer;
+}

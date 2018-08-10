@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: dbdecaps
+-- Host: 127.0.0.1    Database: capstone
 -- ------------------------------------------------------
 -- Server version	5.7.21-log
 
@@ -8,6 +8,8 @@
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
@@ -37,7 +39,11 @@ CREATE TABLE `tblbranch` (
 -- Dumping data for table `tblbranch`
 --
 
-INSERT INTO `tblbranch` VALUES (14,'A-team Pasig',11,'Concepcion St','Pasig City',29),(15,' A-team Muntinlupa',14,' Plaza Street',' Muntinlupa City',30);
+LOCK TABLES `tblbranch` WRITE;
+/*!40000 ALTER TABLE `tblbranch` DISABLE KEYS */;
+INSERT INTO `tblbranch` VALUES (15,'  A-team Muntinlupa',14,'  Plaza Street','  Muntinlupa City',34);
+/*!40000 ALTER TABLE `tblbranch` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblcat`
@@ -52,14 +58,18 @@ CREATE TABLE `tblcat` (
   `membershipname` varchar(45) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`membershipID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tblcat`
 --
 
-INSERT INTO `tblcat` VALUES (4,'  The Client is allowed to visit and use the gym equipment in all of our branches nationwide','  Interbranch',1);
+LOCK TABLES `tblcat` WRITE;
+/*!40000 ALTER TABLE `tblcat` DISABLE KEYS */;
+INSERT INTO `tblcat` VALUES (4,'  The Client is allowed to visit and use the gym equipment in all of our branches nationwide','  Interbranch',1),(5,'Exclusive on one of our branches','Exclusive',1);
+/*!40000 ALTER TABLE `tblcat` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblclass`
@@ -81,7 +91,11 @@ CREATE TABLE `tblclass` (
 -- Dumping data for table `tblclass`
 --
 
+LOCK TABLES `tblclass` WRITE;
+/*!40000 ALTER TABLE `tblclass` DISABLE KEYS */;
 INSERT INTO `tblclass` VALUES (3,'  Zumbas','  Dancing that may increase your cardiovascular endurance',1);
+/*!40000 ALTER TABLE `tblclass` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblfacilities`
@@ -104,7 +118,67 @@ CREATE TABLE `tblfacilities` (
 -- Dumping data for table `tblfacilities`
 --
 
-INSERT INTO `tblfacilities` VALUES (1,'Washroom',100,24,'hr');
+LOCK TABLES `tblfacilities` WRITE;
+/*!40000 ALTER TABLE `tblfacilities` DISABLE KEYS */;
+INSERT INTO `tblfacilities` VALUES (1,' Washroom',100,12,'hr');
+/*!40000 ALTER TABLE `tblfacilities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tblgenera`
+--
+
+DROP TABLE IF EXISTS `tblgenera`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tblgenera` (
+  `generalID` int(11) NOT NULL AUTO_INCREMENT,
+  `genname` varchar(70) DEFAULT NULL,
+  `genperiod` int(11) DEFAULT NULL,
+  `UOM` varchar(50) DEFAULT NULL,
+  `fee` int(11) DEFAULT NULL,
+  PRIMARY KEY (`generalID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tblgenera`
+--
+
+LOCK TABLES `tblgenera` WRITE;
+/*!40000 ALTER TABLE `tblgenera` DISABLE KEYS */;
+INSERT INTO `tblgenera` VALUES (1,' Training Sessions',2,'Session',50);
+/*!40000 ALTER TABLE `tblgenera` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tblmemrates`
+--
+
+DROP TABLE IF EXISTS `tblmemrates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tblmemrates` (
+  `memrateid` int(11) NOT NULL AUTO_INCREMENT,
+  `memfee` int(11) DEFAULT NULL,
+  `memperiod` int(11) DEFAULT NULL,
+  `memcat` int(11) DEFAULT NULL,
+  `memname` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`memrateid`),
+  KEY `memcat_idx` (`memcat`),
+  CONSTRAINT `memcat` FOREIGN KEY (`memcat`) REFERENCES `tblcat` (`membershipID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tblmemrates`
+--
+
+LOCK TABLES `tblmemrates` WRITE;
+/*!40000 ALTER TABLE `tblmemrates` DISABLE KEYS */;
+INSERT INTO `tblmemrates` VALUES (2,150,186,5,'  Silver');
+/*!40000 ALTER TABLE `tblmemrates` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblprogram`
@@ -125,7 +199,11 @@ CREATE TABLE `tblprogram` (
 -- Dumping data for table `tblprogram`
 --
 
+LOCK TABLES `tblprogram` WRITE;
+/*!40000 ALTER TABLE `tblprogram` DISABLE KEYS */;
 INSERT INTO `tblprogram` VALUES (1,'boxing','suntukan'),(2,'taekwando','sipaan'),(3,'MMA','mixed martial arts'),(4,'Brazillian Jujitsu','Grappling and Take Downs');
+/*!40000 ALTER TABLE `tblprogram` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblpromo`
@@ -150,7 +228,11 @@ CREATE TABLE `tblpromo` (
 -- Dumping data for table `tblpromo`
 --
 
+LOCK TABLES `tblpromo` WRITE;
+/*!40000 ALTER TABLE `tblpromo` DISABLE KEYS */;
 INSERT INTO `tblpromo` VALUES (4,'  Summer Promo','  08/11/2018','  08/18/2018',5,'Active',1),(5,'Ramadan Promo','04/11/2018','04/28/2018',10,'Active',2);
+/*!40000 ALTER TABLE `tblpromo` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tblspecial`
@@ -172,7 +254,11 @@ CREATE TABLE `tblspecial` (
 -- Dumping data for table `tblspecial`
 --
 
-INSERT INTO `tblspecial` VALUES (4,'  Boxing','  A Sport that requires speed, stamina and power',1);
+LOCK TABLES `tblspecial` WRITE;
+/*!40000 ALTER TABLE `tblspecial` DISABLE KEYS */;
+INSERT INTO `tblspecial` VALUES (4,'Strength Training','This training focuses on raw strength.',1);
+/*!40000 ALTER TABLE `tblspecial` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tbluser`
@@ -204,14 +290,19 @@ CREATE TABLE `tbluser` (
   KEY `specialization_idx` (`specialization`),
   CONSTRAINT `branch` FOREIGN KEY (`branch`) REFERENCES `tblbranch` (`branchID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `specialization` FOREIGN KEY (`specialization`) REFERENCES `tblspecial` (`specialID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tbluser`
 --
 
-INSERT INTO `tbluser` VALUES (9,NULL,NULL,'admin','12345',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(29,'Jon','Balmaceda','Balmaceda@gmail.com',NULL,4,NULL,NULL,NULL,14,'+639635241989',NULL,NULL,NULL,NULL,NULL,'Active'),(30,'Carlo','Doronila','Doro@gmail.com',NULL,4,NULL,NULL,NULL,15,'+639635241989',NULL,NULL,NULL,NULL,NULL,'Active'),(31,'Rafhael','Pabustan','pb@gmail.com',NULL,4,NULL,NULL,NULL,NULL,'+639526396854',NULL,NULL,NULL,NULL,NULL,'Inactive'),(32,'   Jethro','   Samson','jeth@gmail.com',NULL,3,NULL,NULL,NULL,14,'   +639856478120','   80 Plaza St , Sta Mesa Manila','male','Monday,Tuesday,Sunday','   08/01/2008',4,NULL);
+LOCK TABLES `tbluser` WRITE;
+/*!40000 ALTER TABLE `tbluser` DISABLE KEYS */;
+INSERT INTO `tbluser` VALUES (9,NULL,NULL,'admin','12345',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(30,'Carlo','Doronila','Doro@gmail.com',NULL,4,NULL,NULL,NULL,NULL,'+639635241989',NULL,NULL,NULL,NULL,NULL,'Inactive'),(31,'Rafhael','Pabustan','pb@gmail.com',NULL,4,NULL,NULL,NULL,NULL,'+639526396854',NULL,NULL,NULL,NULL,NULL,'Inactive'),(32,'    Jethros','    Samson','jeth@gmail.com',NULL,3,NULL,NULL,NULL,15,'    +639856478120','    80 Plaza St , Sta Mesa Manila','female','Thursday,Friday,Saturday','    08/01/2008',4,NULL),(34,'Lance','Sanpablo','lance@gmail.com',NULL,4,NULL,NULL,NULL,NULL,'+63923456789',NULL,NULL,NULL,NULL,NULL,'Inactive');
+/*!40000 ALTER TABLE `tbluser` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -221,4 +312,4 @@ INSERT INTO `tbluser` VALUES (9,NULL,NULL,'admin','12345',1,NULL,NULL,NULL,NULL,
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed
+-- Dump completed on 2018-08-08 17:00:53

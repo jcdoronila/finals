@@ -7,17 +7,6 @@ router.use(authMiddleware.hasAuth);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //insert staff
 var indexController = require('./controllers/index');
 router.get('/', indexController);
@@ -766,9 +755,7 @@ function personal(req,res){
 function regular(req,res){
     res.render('admin/transactions/views/t-regular');
 }
-function revenue(req,res){
-    res.render('admin/transactions/views/t-revenue');
-}
+
 //A-TEAM FITNESS GETS
 
 //GENERAL
@@ -784,7 +771,6 @@ router.get('/discount', viewDiscount,discount);
 router.get('/facility',viewFac, facility);
 router.get('/general',viewGen, general);
 router.get('/membership',viewMembership,viewcatdrop, membership);
-/*router.get('/program', viewProgram, program);*/
 router.get('/specialization', viewSpecial,specs);
 router.get('/staff', viewStaff,staff );
 router.get('/trainer',viewTrainer,viewspecialdrop,viewbranchdrop, trainer);
@@ -798,7 +784,6 @@ router.get('/payment', payment);
 router.get('/pending', pending);
 router.get('/personal', personal);
 router.get('/regular', regular);
-router.get('/revenue', revenue);
 /**
  * Here we just export said router on the 'index' property of this module.
  */

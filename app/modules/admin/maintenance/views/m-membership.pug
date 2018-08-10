@@ -9,10 +9,10 @@ block main
             .content-panel
               table.table.table-striped.table-advance.table-hover
                 h4
-                  | Membership Rates
+                  | Membership Type Rates
                   button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
                     i.fa.fa-plus
-                    |  Add Membership
+                    |  Add Rate
                 thead
                   tr
                     th
@@ -50,7 +50,7 @@ block main
         .modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-            h4#myModalLabel.modal-title Add Membership
+            h4#myModalLabel.modal-title Add Rate
           form(action='/membership', method='POST')
             .modal-body
               .container-fluid
@@ -79,7 +79,7 @@ block main
                         input.form-control(type='number' name='memdura')
             .modal-footer
               button.btn.btn-default(type='button', data-dismiss='modal') Close
-              button.btn.btn-primary(type='submit') Add Membership
+              button.btn.btn-primary(type='submit') Add Rate
 
     // MODAL EDIT MEMBER
     #editmodal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
