@@ -6,28 +6,29 @@ block main
 			.row.mt
 				.col-md-12
 					.content-panel
-						table.table.table-striped.table-advance.table-hover
-							h4
-								| All Pending Requests
-							thead
-								tr
-									th
-										i.fa.fa-user
-										|  Name
-									th
-										i.fa.fa-edit
-										|  Action
-								tbody 
-									tr 
-										td John Doe
-										td 
-											button.btn.btn-info.btn-xs(type='button', data-toggle='modal', data-target='#viewmodal' )
-												i.fa.fa-search
-											button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Accept', data-target='#code')
-												i.fa.fa-check
-											button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Reject')
-												i.fa.fa-times
-			// /content-panel
+						.container-fluid
+							table.table.table-striped.table-advance.table-hover
+								h4
+									| All Pending Requests
+								thead
+									tr
+										th
+											i.fa.fa-user
+											|  Name
+										th
+											i.fa.fa-edit
+											|  Action
+									tbody 
+										tr 
+											td John Doe
+											td 
+												button.btn.btn-info.btn-xs(type='button', data-toggle='modal', data-target='#viewmodal' )
+													i.fa.fa-search
+												button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Accept', data-target='#code')
+													i.fa.fa-check
+												button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Reject')
+													i.fa.fa-times
+				// /content-panel
 
 			// VIEW
 			#viewmodal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')

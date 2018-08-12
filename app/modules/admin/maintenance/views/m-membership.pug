@@ -7,43 +7,44 @@ block main
         .row.mt
           .col-md-12
             .content-panel
-              table.table.table-striped.table-advance.table-hover
-                h4
-                  | Membership Type Rates
-                  button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
-                    i.fa.fa-plus
-                    |  Add Rate
-                thead
-                  tr
-                    th
-                      i.fa.fa-credit-card
-                      |  Name
-                    th
-                      i.fa.fa-home
-                      |  Category
-                    th
-                      i.fa.fa-calendar-alt
-                      |  Period (Days)
-                    th
-                      i.fa.fa-coins
-                      |  Amount
-                    th
-                      i.fa.fa-edit
-                      |  Action
-                tbody
-                  each me in mems
+              .container-fluid
+                table.table.table-striped.table-advance.table-hover
+                  h4
+                    | Membership Type Rates
+                    button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
+                      i.fa.fa-plus
+                      |  Add Rate
+                  thead
                     tr
-                      td #{me.memname}
-                      td #{me.membershipname}
-                      td #{me.memperiod}
-                      td #{me.memfee}
-                      td
-                        button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Account', data-target='#editmodal' data-memname=me.memname data-id=me.memrateid)
-                          - console.log(me.memname)
-                            i.fa.fa-edit
-                        button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=me.memrateid)
-                            i.fa.fa-trash-alt
-            // /content-panel
+                      th
+                        i.fa.fa-credit-card
+                        |  Name
+                      th
+                        i.fa.fa-home
+                        |  Category
+                      th
+                        i.fa.fa-calendar-alt
+                        |  Period (Days)
+                      th
+                        i.fa.fa-coins
+                        |  Amount
+                      th
+                        i.fa.fa-edit
+                        |  Action
+                  each me in mems
+                    tbody
+                      tr
+                        td #{me.memname}
+                        td #{me.membershipname}
+                        td #{me.memperiod}
+                        td #{me.memfee}
+                        td
+                          button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Account', data-target='#editmodal' data-memname=me.memname data-id=me.memrateid)
+                            - console.log(me.memname)
+                              i.fa.fa-edit
+                          button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=me.memrateid)
+                              i.fa.fa-trash-alt
+              // /content-panel
     // MODAL ADD MEMBER
     #add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
       .modal-dialog

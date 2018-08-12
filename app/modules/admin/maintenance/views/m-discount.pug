@@ -7,47 +7,48 @@ block main
         .row.mt
           .col-md-12
             .content-panel
-              table.table.table-striped.table-advance.table-hover
-                h4
-                  | All Promos
-                  button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
-                    i.fa.fa-plus
-                    |  Add Promo
-                thead
-                  tr
-                    th
-                      i.fa.fa-user
-                      |  Name
-                    th
-                      i.fa.fa-calendar-alt
-                      |  Starting Date
-                    th
-                      i.fa.fa-calendar-alt
-                      |  End Date
-                    th
-                      i.fa.fa-coins
-                      |  Discount (%)
-                    th
-                      i.fa.fa-bookmark
-                      |  Status
-                    th
-                      i.fa.fa-edit
-                      |  Action
-                each ds in discounts   
-                  tbody
+              .container-fluid
+                table.table.table-striped.table-advance.table-hover
+                  h4
+                    | All Promos
+                    button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
+                      i.fa.fa-plus
+                      |  Add Promo
+                  thead
                     tr
-                      td #{ds.promoname}
-                      td #{ds.startdate}
-                      td #{ds.enddate}
-                      td #{ds.discount}
-                      td
-                        span.label.label-success
-                          | #{ds.status}                 
-                      td
-                        button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Account', data-target='#editmodal' data-id=ds.promoID data-name=ds.promoname data-sdate=ds.startdate data-edate=ds.enddate data-disc=ds.discount)
-                          i.fa.fa-edit
-                        button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=ds.promoID)
-                          i.fa.fa-trash-alt
+                      th
+                        i.fa.fa-user
+                        |  Name
+                      th
+                        i.fa.fa-calendar-alt
+                        |  Starting Date
+                      th
+                        i.fa.fa-calendar-alt
+                        |  End Date
+                      th
+                        i.fa.fa-coins
+                        |  Discount (%)
+                      th
+                        i.fa.fa-bookmark
+                        |  Status
+                      th
+                        i.fa.fa-edit
+                        |  Action
+                  tbody
+                    each ds in discounts   
+                      tr
+                        td #{ds.promoname}
+                        td #{ds.startdate}
+                        td #{ds.enddate}
+                        td #{ds.discount}
+                        td
+                          span.label.label-success
+                            | #{ds.status}                 
+                        td
+                          button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Account', data-target='#editmodal' data-id=ds.promoID data-name=ds.promoname data-sdate=ds.startdate data-edate=ds.enddate data-disc=ds.discount)
+                            i.fa.fa-edit
+                          button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=ds.promoID)
+                            i.fa.fa-trash-alt
             // /content-panel
     // MODAL ADD
     #add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')

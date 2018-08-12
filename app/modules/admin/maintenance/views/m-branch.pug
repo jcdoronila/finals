@@ -6,37 +6,39 @@ block main
 			.row.mt
 				.col-md-12
 					.content-panel
-						table.table.table-striped.table-advance.table-hover
-							h4
-								| All Branch
-								button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
-									i.fa.fa-home
-									|  Add Branch
-							thead
-								tr
-									th
+						.container-fluid
+							table.table.table-striped.table-advance.table-hover
+								
+								h4
+									| All Branch
+									button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
 										i.fa.fa-home
-										|  Name
-									th
-										i.fa.fa-map-marker-alt
-										|  Address
-									th
-										i.fa.fa-user
-										|  Manager
-									th
-										i.fa.fa-edit
-										|  Action
-							each br in branches               
-								tbody
+										|  Add Branch
+								thead
 									tr
-										td #{br.branchname}
-										td #{br.branchstreetnum} #{br.branchstreetname} #{br.branchcity}
-										td #{br.userfname} #{br.userlname}
-										td
-											button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Account', data-target='#editmodal' data-id=br.branchID data-name=br.branchname data-sname=br.branchstreetname data-snum=br.branchstreetnum data-city=br.branchcity data-oldid=br.user)
-												i.fa.fa-edit
-											button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=br.branchID data-oldid=br.user)
-												i.fa.fa-trash-alt
+										th
+											i.fa.fa-home
+											|  Name
+										th
+											i.fa.fa-map-marker-alt
+											|  Address
+										th
+											i.fa.fa-user
+											|  Manager
+										th
+											i.fa.fa-edit
+											|  Action
+								tbody
+									each br in branches               
+										tr
+											td #{br.branchname}
+											td #{br.branchstreetnum} #{br.branchstreetname} #{br.branchcity}
+											td #{br.userfname} #{br.userlname}
+											td
+												button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Account', data-target='#editmodal' data-id=br.branchID data-name=br.branchname data-sname=br.branchstreetname data-snum=br.branchstreetnum data-city=br.branchcity data-oldid=br.user)
+													i.fa.fa-edit
+												button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=br.branchID data-oldid=br.user)
+													i.fa.fa-trash-alt
 					// /content-panel
 					// MODAL ADD MEMBER
 					#add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
@@ -152,8 +154,6 @@ script.
 		var snum=button.data('snum')
 		var city=button.data('city')
 		var oldid=button.data('oldid')
-
-
 
 		let modal = $(this)  
 		modal.find('.modal-body #name').val(` ${name}`)   

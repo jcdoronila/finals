@@ -7,35 +7,37 @@ block main
         .row.mt
           .col-md-12
             .content-panel
-              table.table.table-striped.table-advance.table-hover
-                h4
-                  | All Trainers
-                  button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
-                    i.fa.fa-user-plus
-                    |  Add Trainer
-                thead
-                  tr
-                    th
-                      i.fa.fa-user
-                      |  Name
-                    th
-                      i.fa.fa-calendar-alt
-                      |  Birthday
-                    th
-                      i.fa.fa-edit
-                      |  Action
-                each tr in trains      
-                  tbody
+              .container-fluid
+                table.table.table-striped.table-advance.table-hover
+                  h4
+                    | All Trainers
+                    button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
+                      i.fa.fa-user-plus
+                      |  Add Trainer
+                  thead
                     tr
-                      td #{tr.userfname} #{tr.userlname}
-                      td #{tr.userbday}
-                      td
-                        button#view.btn.btn-info.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='View Trainer', data-target='#viewmodal' data-sched=tr.userschedule data-mob=tr.usermobile data-bra=tr.branchname data-spe=tr.specialname data-email=tr.useremail data-addr=tr.useraddress data-gen=tr.usergender)
-                          i.fa.fa-search
-                        button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Trainer', data-target='#editmodal' data-fname=tr.userfname data-mob=tr.usermobile  data-lname=tr.userlname data-email=tr.useremail data-addr=tr.useraddress data-bday=tr.userbday data-id=tr.userid)
-                          i.fa.fa-edit
-                        button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=tr.userid)
-                          i.fa.fa-trash-alt
+                      th
+                        i.fa.fa-user
+                        |  Name
+                      th
+                        i.fa.fa-calendar-alt
+                        |  Birthday
+                      th
+                        i.fa.fa-edit
+                        |  Action
+                  tbody
+                    each tr in trains 
+                      tr
+                        td #{tr.userfname} #{tr.userlname}
+                        td #{tr.userbday}
+                        td
+                          button#view.btn.btn-info.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='View Trainer', data-target='#viewmodal' data-sched=tr.userschedule data-mob=tr.usermobile data-bra=tr.branchname data-spe=tr.specialname data-email=tr.useremail data-addr=tr.useraddress data-gen=tr.usergender)
+                            i.fa.fa-search
+                          button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Trainer', data-target='#editmodal' data-fname=tr.userfname data-mob=tr.usermobile  data-lname=tr.userlname data-email=tr.useremail data-addr=tr.useraddress data-bday=tr.userbday data-id=tr.userid)
+                            i.fa.fa-edit
+                          button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=tr.userid)
+                            i.fa.fa-trash-alt
+                            
     // MODAL ADD MEMBER
     #add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
       .modal-dialog.modal-lg

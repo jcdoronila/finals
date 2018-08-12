@@ -23,47 +23,48 @@ block main
 			.row.mt
 				.col-md-12
 					.content-panel
-						table.table.table-striped.table-advance.table-hover
-							h4
-								| Billing and Payment
-							thead
-								tr
-									th
-										i.fa.fa-user
-										|  Name
-									th
-										i.fa.fa-phone
-										|  Contact
-									th
-										i.fa.fa-coins
-										|  Amount (Peso)
-									th
-										i.fa.fa-calendar
-										|  Due Date
-									th
-										i.fa.fa-info-circle
-										|  Status
-									th
-										i.fa.fa-edit
-										|  Action
-							tbody
-								tr
-									td.hidden-phone John Doe
-									td 09999888776
-									td 5410
-									td 01/01/2018
-									td 
-										span.label.label-danger 
-											| Past Due
-									td
-										button#view.btn.btn-primary.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='View Billing Description')
-											i.fa.fa-search
-										button#pay.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Pay')
+						.container-fluid
+							table.table.table-striped.table-advance.table-hover
+								h4
+									| Billing and Payment
+								thead
+									tr
+										th
+											i.fa.fa-user
+											|  Name
+										th
+											i.fa.fa-phone
+											|  Contact
+										th
 											i.fa.fa-coins
-										button#suspend.btn.btn-warning.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Suspend')
-											i.fa.fa-exclamation-circle
-										button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Delete')
-											i.fa.fa-trash
+											|  Amount (Peso)
+										th
+											i.fa.fa-calendar
+											|  Due Date
+										th
+											i.fa.fa-info-circle
+											|  Status
+										th
+											i.fa.fa-edit
+											|  Action
+								tbody
+									tr
+										td.hidden-phone John Doe
+										td 09999888776
+										td 5410
+										td 01/01/2018
+										td 
+											span.label.label-danger 
+												| Past Due
+										td
+											button#view.btn.btn-primary.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='View Billing Description')
+												i.fa.fa-search
+											button#pay.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Pay')
+												i.fa.fa-coins
+											button#suspend.btn.btn-warning.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Suspend')
+												i.fa.fa-exclamation-circle
+											button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Delete')
+												i.fa.fa-trash
 
 #view-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
 	.modal-dialog.modal-lg

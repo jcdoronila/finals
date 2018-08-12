@@ -7,50 +7,51 @@ block main
         .row.mt
           .col-md-12
             .content-panel
-              table.table.table-striped.table-advance.table-hover
-                h4
-                  | Regular Member
-                  button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
-                    i.fa.fa-user-plus
-                    |  Add Member
-                thead
-                  tr
-                   
-                    th
-                      i.fa.fa-user
-                      |  Name
-                    th
-                      i.fa.fa-home
-                      |  Branch
-                    th
-                      i.fa.fa-phone
-                      |  Contact
-                    th
-                      i.fa.fa-bookmark
-                      |  Membership
-                    th
-                      i.fa.fa-edit
-                      |  Action
-                tbody
-                  tr
-                  
-                    td.hidden-phone John Doe
-                    td All
-                    td  09999888776
-                    td
-                      span.label.label-warning Gold
-                      |  - Interbranch
-                    td
-                      button#freeze.btn.btn-primary.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Freeze Account')
-                        i.fa.fa-snowflake
-                      button#edit.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Edit Account')
+              .container-fluid
+                table.table.table-striped.table-advance.table-hover
+                  h4
+                    | Regular Member
+                    button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
+                      i.fa.fa-user-plus
+                      |  Add Member
+                  thead
+                    tr
+                    
+                      th
+                        i.fa.fa-user
+                        |  Name
+                      th
+                        i.fa.fa-home
+                        |  Branch
+                      th
+                        i.fa.fa-phone
+                        |  Contact
+                      th
+                        i.fa.fa-bookmark
+                        |  Membership
+                      th
                         i.fa.fa-edit
-                      button#train.btn.btn-warning.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Assign Trainer')
-                        i.fa.fa-dumbbell
-                      button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Suspend Account')
-                        i.fa.fa-exclamation-circle
-                      
-         
+                        |  Action
+                  tbody
+                    tr
+                    
+                      td.hidden-phone John Doe
+                      td All
+                      td  09999888776
+                      td
+                        span.label.label-warning Gold
+                        |  - Interbranch
+                      td
+                        button#freeze.btn.btn-primary.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Freeze Account')
+                          i.fa.fa-snowflake
+                        button#edit.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Edit Account')
+                          i.fa.fa-edit
+                        button#train.btn.btn-warning.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Assign Trainer')
+                          i.fa.fa-dumbbell
+                        button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Suspend Account')
+                          i.fa.fa-exclamation-circle
+                        
+          
     // MODAL ADD MEMBER
     #add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
       .modal-dialog.modal-lg

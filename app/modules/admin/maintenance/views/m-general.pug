@@ -7,41 +7,42 @@ block main
         .row.mt
           .col-md-12
             .content-panel
-              table.table.table-striped.table-advance.table-hover
-                h4
-                  | General Fee
-                  button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
-                    i.fa.fa-plus
-                    |  Add Fee
-                thead
-                  tr
-                    th
-                      i.fa.fa-dumbbell
-                      |  Name
-                    th
-                      i.fa.fa-coins
-                      |  Price (₱)
-                    th
-                    th
-                      i.fa.fa-clock
-                      |  Usage Duration
-                    th
-                      i.fa.fa-edit
-                      |  Action       
-                tbody
-                  each ge in gens
+              .container-fluid
+                table.table.table-striped.table-advance.table-hover
+                  h4
+                    | General Fee
+                    button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
+                      i.fa.fa-plus
+                      |  Add Fee
+                  thead
                     tr
-                      td  #{ge.genname}
-                      td #{ge.fee}
-                      td /
-                      td #{ge.genperiod} #{ge.UOM}
-                      td
-                        button.btn.btn-success.btn-xs.tooltips(data-toggle='modal', data-target='#editmodal', data-placement='top', data-original-title='Edit' data-id=ge.generalID data-genname=ge.genname)
-                          - console.log(ge.generalID)
-                          i.fa.fa-edit
-                        button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal')
-                          i.fa.fa-trash-alt
-            // /content-panel
+                      th
+                        i.fa.fa-dumbbell
+                        |  Name
+                      th
+                        i.fa.fa-coins
+                        |  Price (₱)
+                      th
+                      th
+                        i.fa.fa-clock
+                        |  Usage Duration
+                      th
+                        i.fa.fa-edit
+                        |  Action       
+                  tbody
+                    each ge in gens
+                      tr
+                        td  #{ge.genname}
+                        td #{ge.fee}
+                        td /
+                        td #{ge.genperiod} #{ge.UOM}
+                        td
+                          button.btn.btn-success.btn-xs.tooltips(data-toggle='modal', data-target='#editmodal', data-placement='top', data-original-title='Edit' data-id=ge.generalID data-genname=ge.genname)
+                            - console.log(ge.generalID)
+                            i.fa.fa-edit
+                          button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal')
+                            i.fa.fa-trash-alt
+              // /content-panel
     // MODAL ADD MEMBER
     #add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
       .modal-dialog

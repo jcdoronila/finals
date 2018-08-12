@@ -7,33 +7,34 @@ block main
       .row.mt
         .col-md-12
           .content-panel
-            table.table.table-striped.table-advance.table-hover
-              h4
-                | All Membership Categories
-                button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
-                  i.fa.fa-dumbbell
-                  |  Add Category
-              thead
-                tr
-                  th
+            .container-fluid
+              table.table.table-striped.table-advance.table-hover
+                h4
+                  | All Membership Categories
+                  button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
                     i.fa.fa-dumbbell
-                    |  Name
-                  th
-                    i.fa.fa-edit
-                    |  Action
-              each ct in cats        
-                tbody
+                    |  Add Category
+                thead
                   tr
-                   
-                    td #{ct.membershipname}
-                    td
-                      button.btn.btn-info.btn-xs(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#viewmodal' data-name=ct.membershipname data-desc=ct.membershipdesc)
-                          i.fa.fa-search
-                      button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit', data-target='#editmodal' data-name=ct.membershipname data-desc=ct.membershipdesc data-id=ct.membershipID)
-                        i.fa.fa-edit
-                      button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=ct.membershipID)
-                           i.fa.fa-trash-alt
-          // /content-panel
+                    th
+                      i.fa.fa-dumbbell
+                      |  Name
+                    th
+                      i.fa.fa-edit
+                      |  Action
+                tbody
+                  each ct in cats
+                    tr
+                    
+                      td #{ct.membershipname}
+                      td
+                        button.btn.btn-info.btn-xs(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#viewmodal' data-name=ct.membershipname data-desc=ct.membershipdesc)
+                            i.fa.fa-search
+                        button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit', data-target='#editmodal' data-name=ct.membershipname data-desc=ct.membershipdesc data-id=ct.membershipID)
+                          i.fa.fa-edit
+                        button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=ct.membershipID)
+                            i.fa.fa-trash-alt
+            // /content-panel
     // MODAL ADD MEMBERSHIP
     #add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
       .modal-dialog

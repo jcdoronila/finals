@@ -6,39 +6,39 @@ block main
 			.row.mt
 				.col-md-12
 					.content-panel
-						table.table.table-striped.table-advance.table-hover
-							h4
-								| All Staffs
-								button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
-									i.fa.fa-user-plus
-									|  Add Staff
-							thead
-								tr
-									th
-										i.fa.fa-user
-										|  Name
-									th
-										i.fa.fa-bookmark
-										|  Status	
-									th
-										i.fa.fa-edit
-										|  Action	
-								each st in staffs 
-										tbody 
-											tr 
-												td #{st.userfname} #{st.userlname}
-												td 
-													span.label.label-success
-															| #{st.statusfront}
-					
-												td 
-													button.btn.btn-info.btn-xs(type='button', data-toggle='modal', data-target='#viewmodal' data-email=st.useremail data-mobile=st.usermobile)
-														i.fa.fa-search
-													button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Account', data-target='#editmodal' data-email=st.useremail,
-													data-mobile=st.usermobile,data-fname=st.userfname, data-lname=st.userlname,data-id=st.userid )
-														i.fa.fa-edit
-													button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=st.userid)
-														i.fa.fa-trash-alt
+						.container-fluid
+							table#table.table.table-striped.table-advance.table-hover
+								h4
+									| All Staffs
+									button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
+										i.fa.fa-user-plus
+										|  Add Staff
+								thead
+									tr
+										th
+											i.fa.fa-user
+											|  Name
+										th
+											i.fa.fa-bookmark
+											|  Status	
+										th
+											i.fa.fa-edit
+											|  Action	
+								tbody 
+									each st in staffs 
+										tr 
+											td #{st.userfname} #{st.userlname}
+											td 
+												span.label.label-success
+													| #{st.statusfront}
+											td 
+												button.btn.btn-info.btn-xs(type='button', data-toggle='modal', data-target='#viewmodal' data-email=st.useremail data-mobile=st.usermobile)
+													i.fa.fa-search
+												button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Edit Account', data-target='#editmodal' data-email=st.useremail,
+												data-mobile=st.usermobile,data-fname=st.userfname, data-lname=st.userlname,data-id=st.userid )
+													i.fa.fa-edit
+												button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently' data-target='#deletemodal' data-id=st.userid)
+													i.fa.fa-trash-alt
 
 
 			// /content-panel
@@ -238,7 +238,7 @@ script.
 		var id = button.data('id')
 		console.log(id)
 		var fullname = fname + ' ' + lname
- 
+
 		let modal = $(this)     
 		modal.find('.modal-body #email').val(` ${email}`)  
 		modal.find('.modal-body #mobile').val(` ${mobile}`)
@@ -255,6 +255,7 @@ script.
 		let modal = $(this)     
 		modal.find('.modal-body #id').val(` ${id}`)
 	})
+
 
 
 

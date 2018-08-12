@@ -7,40 +7,41 @@ block main
         .row.mt
           .col-md-12
             .content-panel
-              table.table.table-striped.table-advance.table-hover
-                h4
-                  | Member to PT Trainer Manual Assignment
-                  button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='.add')
-                    i.fa.fa-user-friends
-                    |  Assign PT
-                thead
-                  tr
-                    th
-                      i.fa.fa-user
-                      |  Member
-                    th
+              .container-fluid
+                table.table.table-striped.table-advance.table-hover
+                  h4
+                    | Member to PT Trainer Manual Assignment
+                    button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='.add')
                       i.fa.fa-user-friends
-                      |  Trainer In-charge
-                    th
-                      i.fa.fa-home
-                      |  Branch
-                    th
-                      i.fa.fa-edit
-                      |  Action
-                tbody
-                  tr
-                    td John Doe
-                    td John Paul
-                    td Sta. Mesa 
-                    td
-                      button#view.btn.btn-info.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='View Account')
-                        i.fa.fa-search
-                      button#edit.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Edit Account')
+                      |  Assign PT
+                  thead
+                    tr
+                      th
+                        i.fa.fa-user
+                        |  Member
+                      th
+                        i.fa.fa-user-friends
+                        |  Trainer In-charge
+                      th
+                        i.fa.fa-home
+                        |  Branch
+                      th
                         i.fa.fa-edit
-                      button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently')
-                        i.fa.fa-trash-alt
-          // /content-panel
-    
+                        |  Action
+                  tbody
+                    tr
+                      td John Doe
+                      td John Paul
+                      td Sta. Mesa 
+                      td
+                        button#view.btn.btn-info.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='View Account')
+                          i.fa.fa-search
+                        button#edit.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Edit Account')
+                          i.fa.fa-edit
+                        button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Remove Account Permanently')
+                          i.fa.fa-trash-alt
+            // /content-panel
+      
 // MODAL ADD MEM|PT ASS
 .add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
   .modal-dialog
