@@ -486,7 +486,6 @@ router.post('/trainer/edit', (req, res) => {
           res.redirect('/trainer');
         }
         });
-      
   });
 
 //delete trainer

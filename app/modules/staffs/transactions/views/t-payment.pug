@@ -1,0 +1,175 @@
+include ../../../../templates/staff-portal-head
+block append head
+	style.
+		.invoice-title h2, .invoice-title h3 {
+			display: inline-block;
+		}
+
+		.table > tbody > tr > .no-line {
+				border-top: none;
+		}
+
+		.table > thead > tr > .no-line {
+				border-bottom: none;
+		}
+
+		.table > tbody > tr > .thick-line {
+				border-top: 2px solid;
+		}
+
+block main      
+	section#main-content
+		section.wrapper.site-min-height
+			.row.mt
+				.col-md-12
+					.content-panel
+						.container-fluid
+							table.table.table-striped.table-advance.table-hover
+								h4
+									| Billing and Payment
+								thead
+									tr
+										th
+											i.fa.fa-user
+											|  Name
+										th
+											i.fa.fa-phone
+											|  Contact
+										th
+											i.fa.fa-coins
+											|  Amount (Peso)
+										th
+											i.fa.fa-calendar
+											|  Due Date
+										th
+											i.fa.fa-info-circle
+											|  Status
+										th
+											i.fa.fa-edit
+											|  Action
+								tbody
+									tr
+										td.hidden-phone John Doe
+										td 09999888776
+										td 5410
+										td 01/01/2018
+										td 
+											span.label.label-danger 
+												| Past Due
+										td
+											button#view.btn.btn-primary.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='View Billing Description')
+												i.fa.fa-search
+											button#pay.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Pay')
+												i.fa.fa-coins
+											button#suspend.btn.btn-warning.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Suspend')
+												i.fa.fa-exclamation-circle
+											button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Delete')
+												i.fa.fa-trash
+
+#view-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	.modal-dialog.modal-lg
+		.modal-content
+			.modal-header
+				button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+				h4.modal-title Bill Breakdown
+			form(action='POST', method='')
+				.modal-body
+					.container-fluid
+						.row
+							.col-xs-12
+								.invoice-title
+									h4 Invoice <span class='pull-right'>Issued Date</span>
+								hr
+								.row
+									.col-xs-6
+										address
+											strong Billed To:
+											br
+											|     					[Member Name]
+											br
+											|     					[Member Street Number]
+											br
+											|     					[Member Street/BRGY]
+											br
+											|     					[Member City]
+
+								.row
+									.col-xs-6
+										address
+											strong Due Date:
+											br
+											|     					[Due Date]
+						.row
+							.col-md-12
+								.panel.panel-default
+									.panel-heading
+										h3.panel-title
+											strong Billing Summary
+									.panel-body
+										.table-responsive
+											table.table.table-condensed
+												thead
+													tr
+														td
+															strong Description
+														td.text-center
+															strong Price
+														td.text-center
+															strong Quantity
+														td.text-right
+															strong Totals
+												tbody
+													// foreach ($order->lineItems as $line) or some such thing here
+													tr
+														td Membership (Gold - Interbranch)
+														td.text-center 5000
+														td.text-center -
+														td.text-right 5000
+													tr
+														td Training Session
+														td.text-center 100
+														td.text-center 20
+														td.text-right 2000
+													tr
+														td.thick-line
+														td.thick-line
+														td.thick-line.text-center
+															strong Subtotal
+														td.thick-line.text-right 7000
+													tr
+														td.no-line
+														td.no-line
+														td.no-line.text-center
+															strong Total
+														td.no-line.text-right 7000
+			.modal-footer
+				button.btn.btn-default(type='button', data-dismiss='modal') Close
+				button.btn.btn-primary(type='button') Print
+
+			//- MODAL PAYMENT
+#pay-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	.modal-dialog.modal-sm
+		.modal-content
+			.modal-header
+				button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+				h4.modal-title 	Payment
+			form(action='POST', method='')
+				.modal-body
+					.container-fluid
+						.row
+							p You are about to pay a member of his bills. Do you wish to proceed?
+						br
+			.modal-footer
+				button.btn.btn-default(type='button', data-dismiss='modal') Close
+				button.btn.btn-primary(type='button') Pay
+					
+                      
+include ../../../../templates/foot
+
+script.
+	$('#view').click(function(){
+		$('#view-modal').modal();
+	});
+	$('#pay').click(function(){
+		$('#pay-modal').modal();
+	});
