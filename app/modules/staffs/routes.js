@@ -52,6 +52,7 @@ function s_regular(req,res){
 // ROUTERS
 
 router.get('/', s_dash);
+router.get('/staffs', s_dash);
 router.get('/staffs/reports', s_reports);
 router.get('/staffs/user', s_user);
 router.get('/staffs/utils', s_utils);
