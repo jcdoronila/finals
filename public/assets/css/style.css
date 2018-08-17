@@ -416,6 +416,7 @@ ul.sidebar-menu li a.active i {
 .black-bg {
     background: #ffc700;
     border-bottom: 1px solid #c9aa5f;
+    box-shadow: 0 4px 10px -2px rgba(0,0,0,.2); 
 }
 
 .wrapper {
