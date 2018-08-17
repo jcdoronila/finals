@@ -1,0 +1,108 @@
+section(id='main-content centered')
+    section.wrapper.site-min-height.centered
+        .alert.alert-warning
+            | Hello, 
+            b $userName!
+            |  This is what the first thing the user sees when they visit the Dashboard, feel free to look around! You might get yourself a dose of workout!
+        .row.mt.mb
+            .col-md-12
+                section.task-panel.tasks-widget
+                    .panel-heading.centered
+                        .centered
+                            h4
+                                b Your Checklist
+                        p In this week's episode of your growth:
+                    .panel-body
+                        .task-content
+                            ul#sortable.task-list
+                                li.list-success
+                                    .task-title
+                                        span.task-title-sp Calves Training
+                                        span.badge.bg-success.pull-right Done
+                                li.list-success
+                                    .task-title
+                                        span.task-title-sp 50x Jumping Jacks
+                                        span.badge.bg-success.pull-right Done
+                                li.list-danger
+                                    .task-title
+                                        span.task-title-sp 14kg Bench Press
+                                        span.badge.bg-theme.pull-right Not Done
+                                li.list-warning
+                                    .task-title
+                                        span.task-title-sp 3-Minute Planks
+                                        span.badge.bg-warning.pull-right On Progress
+                                li.list-danger
+                                    .task-title
+                                        span.task-title-sp 35-rep Push Ups
+                                        span.badge.bg-theme.pull-right Not Done
+            // /col-md-12
+        // /row
+        hr
+        h4.centered
+            b Recommended classes and events for you:
+        .col-lg-4.col-md-4.col-sm-4.mb
+            .content-panel.pn.centered
+                #ce-panel-1
+                    h3
+                        b YOGA
+                    h6 SLOTS AVAILABLE: 12/40
+                .ce-panel-1
+                    p
+                        b
+                            | JOIN CLASS
+                            b
+                .centered
+                    h6
+                        b Tuesdays
+                        | : 10:30AM - 1:30PM
+                        br
+                        b Fridays
+                        | : 5:30PM - 7:30PM
+        .col-lg-4.col-md-4.col-sm-4.mb
+            .content-panel.pn.centered
+                #ce-panel-2
+                    h3
+                        b BODYBULDING CONTEST
+                    h6 ATTENDING PEOPLE: 51
+                .ce-panel-2
+                    p
+                        b
+                            | INTERESTED
+                            b
+                .centered
+                    h6
+                        b Wednesday
+                        | : 8:30PM - 10:30PM
+        .col-lg-4.col-md-4.col-sm-4.mb
+            .content-panel.pn.centered
+                #ce-panel-3
+                    h3
+                        b ZUMBA
+                    h6 SLOTS AVAILABLE: 53/80
+                .ce-panel-3
+                    p
+                        b
+                            | JOIN CLASS
+                            b
+                .centered
+                    h6
+                        b Sundays
+                        | : 7:30AM - 10:30AM
+                        br
+        h5
+            a(href='#') See all classes and events
+        hr
+        br
+        h3.centered
+            b SCHEDULED CALENDAR
+        section#main-content
+            section.wrapper
+                aside.col-lg-9.mt
+                    section.panel
+                        .panel-body
+                            #calendar.has-toolbar
+                // page end
+        .alert.alert-info
+            | “People of mediocre ability sometimes achieve outstanding success because they don’t know when to quit. Most men succeed because they are determined to.”
+            | -- George E. Allen
+// /MAIN CONTENT
