@@ -23,6 +23,9 @@ block main
                         i.fa.fa-calendar-alt
                         |  Birthday
                       th
+                        i.fa.fa-calendar-alt
+                        |  Schedule 
+                      th
                         i.fa.fa-edit
                         |  Action
                   tbody
@@ -30,6 +33,7 @@ block main
                       tr
                         td #{tr.userfname} #{tr.userlname}
                         td #{tr.userbday}
+                        td #{tr.userschedule}
                         td
                           button#view.btn.btn-info.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='View Trainer', data-target='#viewmodal' data-sched=tr.userschedule data-mob=tr.usermobile data-bra=tr.branchname data-spe=tr.specialname data-email=tr.useremail data-addr=tr.useraddress data-gen=tr.usergender)
                             i.fa.fa-search
@@ -151,11 +155,11 @@ block main
                     .col-md-6
                       .form-group
                         label.control-label Username
-                        input.form-control(type='text')
+                        input.form-control(type='text' name='username')
                     .col-md-6
                       .form-group
                         label.control-label Password
-                        input.form-control(type='password')
+                        input.form-control(type='password' name='password')
                   .row
                     .col-md-4
                       label(for='file') Display Image

@@ -1,7 +1,10 @@
 var router = require('express').Router();
+var express = require('express');
 var authMiddleware = require('../auth/middlewares/auth');
 router.use(authMiddleware.staffHasAuth);
 
+var indexController = require('./controllers/index');
+router.get('/', indexController);
 //LOGOUT
 function logout(req, res){
     res.render('auth/views/landing');
@@ -52,18 +55,17 @@ function s_regular(req,res){
 // ROUTERS
 
 router.get('/', s_dash);
-router.get('/staffs', s_dash);
-router.get('/staffs/reports', s_reports);
-router.get('/staffs/user', s_user);
-router.get('/staffs/utils', s_utils);
+router.get('/reports', s_reports);
+router.get('/user', s_user);
+router.get('/utils', s_utils);
 
 
-router.get('/staffs/classes', s_classes);
-router.get('/staffs/event', s_event);
-router.get('/staffs/freezed', s_freezed);
-router.get('/staffs/payment', s_payment);
-router.get('/staffs/pending', s_pending);
-router.get('/staffs/personal', s_personal);
-router.get('/staffs/regular', s_regular);
+router.get('/classes', s_classes);
+router.get('/event', s_event);
+router.get('/freezed', s_freezed);
+router.get('/payment', s_payment);
+router.get('/pending', s_pending);
+router.get('/personal', s_personal);
+router.get('/regular', s_regular);
 
 exports.staffs = router;
