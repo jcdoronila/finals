@@ -11,7 +11,7 @@ router.get('/', indexController);
 
 router.post('/staff', (req, res) => {
     
-      db.query("INSERT INTO tbluser ( userfname, userlname, usermobile, useremail, usertype,statusfront) VALUES ( ?, ?, ?, ?, 4,'Inactive')",[req.body.sfirstName, req.body.slastName, req.body.smobNum, req.body.semail],(err, results, fields)=>{
+      db.query("INSERT INTO tbluser ( userfname, userlname, usermobile, useremail, usertype,statusfront,userpassword,userusername) VALUES ( ?, ?, ?, ?, 4,'Inactive',?,?)",[req.body.sfirstName, req.body.slastName, req.body.smobNum, req.body.semail, req.body.pass, req.body.username],(err, results, fields)=>{
         if (err)
           console.log(err);
         else{
@@ -26,7 +26,7 @@ var indexController = require('./controllers/index');
 router.get('/', indexController);
 
 router.post('/staff/edit', (req, res) => {
-     db.query("UPDATE tbluser SET userfname=?, userlname=?, usermobile=?, useremail=? WHERE userid=?",[req.body.sfirstName, req.body.slastName, req.body.smobNum, req.body.semail, req.body.id],(err, results, fields)=>{
+     db.query("UPDATE tbluser SET userfname=?, userlname=?, usermobile=?, useremail=?, userpassword=?, userusername=? WHERE userid=?",[req.body.sfirstName, req.body.slastName, req.body.smobNum, req.body.semail, req.body.pass, req.body.username, req.body.id],(err, results, fields)=>{
        if (err)
          console.log(err);
        else{
@@ -79,46 +79,6 @@ router.post('/program', (req, res) => {
       
   });
 
- //delete program
-/*var indexController = require('./controllers/index');
-router.get('/', indexController);
-
-router.post('/program/delete', (req, res) => {
-    
-     db.query("UPDATE tblprogram SET status=2 WHERE progid=?",[req.body.id],(err, results, fields)=>{
-       if (err)
-         console.log(err);
-       else{
-         res.redirect('/program');
-       }
-       });
-      
- });*/
-
-//edit program
-/*var indexController = require('./controllers/index');
-router.get('/', indexController);
-
-router.post('/program/edit', (req, res) => {
-    
-     db.query("UPDATE tblprogram SET progname=?, progdesc=? WHERE progID=?",[req.body.progname, req.body.progdesc,req.body.id],(err, results, fields)=>{
-       if (err)
-         console.log(err);
-        else{
-         res.redirect('/program');
-        }
-        });
-      
-  });*/
-
-//view program
-/*function viewProgram(req, res, next){
-  db.query('SELECT * FROM tblprogram WHERE status=1',function(err, results, fields){
-    if(err) return res.send(err);
-    req.viewProgram = results;
-    return next();
-  })
-}*/
 
 //insert classes
 var indexController = require('./controllers/index');
@@ -445,7 +405,7 @@ router.get('/', indexController);
 
 router.post('/trainer', (req, res) => {
     
-      db.query("INSERT INTO tbluser ( userfname, userlname,userbday,usergender,useraddress,usermobile,useremail,userschedule,usertype,branch,specialization) VALUES ( ?, ?, ?, ?, ?, ? ,?, ?, 3, ?, ?)",[req.body.fname, req.body.lname, req.body.bday, req.body.gen, req.body.addr, req.body.mobile, req.body.email, req.body.sched.toString(), req.body.branchid, req.body.specialid],(err, results, fields)=>{
+      db.query("INSERT INTO tbluser ( userfname, userlname,userbday,usergender,useraddress,usermobile,useremail,userschedule,usertype,branch,specialization,userpassword,userusername) VALUES ( ?, ?, ?, ?, ?, ? ,?, ?, 3, ?, ?, ?, ?)",[req.body.fname, req.body.lname, req.body.bday, req.body.gen, req.body.addr, req.body.mobile, req.body.email, req.body.sched.toString(), req.body.branchid, req.body.specialid, req.body.password, req.body.username],(err, results, fields)=>{
         if (err)
           console.log(err);
         else{
@@ -479,7 +439,7 @@ router.get('/', indexController);
 
 router.post('/trainer/edit', (req, res) => {
     
-      db.query("UPDATE tbluser SET userfname=?, userlname=?,userbday=?,usergender=?,useraddress=?,usermobile=?,useremail=?,userschedule=?,branch=?,specialization=? WHERE userid=?",[req.body.fname, req.body.lname, req.body.bday, req.body.gen, req.body.addr, req.body.mobile, req.body.email, req.body.sched.toString(), req.body.branchid, req.body.specialid, req.body.id],(err, results, fields)=>{
+      db.query("UPDATE tbluser SET userfname=?, userlname=?,userbday=?,usergender=?,useraddress=?,usermobile=?,useremail=?,userschedule=?,branch=?,specialization=?,userpassword=?,userusername=? WHERE userid=?",[req.body.fname, req.body.lname, req.body.bday, req.body.gen, req.body.addr, req.body.mobile, req.body.email, req.body.sched.toString(), req.body.branchid, req.body.specialid, req.body.password, req.body.username, req.body.id],(err, results, fields)=>{
         if (err)
           console.log(err);
         else{

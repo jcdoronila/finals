@@ -40,7 +40,7 @@ html(lang='en')
                 | .
               h3.wow.fadeInUp(data-wow-delay='0.6s')
                 strong We
-                |  get what we want, and
+                |  get what we want, and 
                 strong yours
                 | , too.
               a.btn.btn-lg.btn-default.smoothScroll.wow.fadeInUp.hidden-xs(href='#', data-toggle='modal', data-target='#login', data-wow-delay='0.8s') Log-in
@@ -101,7 +101,7 @@ html(lang='en')
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
-          form(action='POST', method='')
+          form(method='POST', action='/signup')
             h2(style='color:black; margin-left:30px;') Sign Up
             .modal-body
               .container-fluid
@@ -169,10 +169,11 @@ html(lang='en')
                       .form-group
                         label.control-label Membership
                         select.form-control
-                          option Select Membership... 
-                          option Gold Membership - (360 days)
-                          option Silver Membership - (120 days)
-                          option Bronze Membership - (30 days)
+                          each dr in drop
+                            option.hidden Select Membership... 
+                            option #{dr.memname} (#{dr.memperiod} Days)
+                            //- option Silver Membership - (120 days)
+                            //- option Bronze Membership - (30 days)
                   .row
                     .col-md-5
                       .form-group
