@@ -171,7 +171,7 @@ html(lang='en')
                         select.form-control
                           each dr in drop
                             option.hidden Select Membership... 
-                            option #{dr.memname} (#{dr.memperiod} Days)
+                            option #{dr.memname}-#{dr.membershipname} (#{dr.memperiod} Days)
                             //- option Silver Membership - (120 days)
                             //- option Bronze Membership - (30 days)
                   .row
