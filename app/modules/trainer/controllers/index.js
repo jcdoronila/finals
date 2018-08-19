@@ -11,12 +11,6 @@ module.exports = (req, res) => {
     });
     
     function render(){
-        /* 
-         * ikaw na bahala kung saang sub-module ilalagay dashboard ng trainers mo
-         * 
-         * Example: res.render('trainer/sub-module-name/views/dashboard');
-         *
-         */
-        res.render('trainer/test/dashboard');
+        res.render('trainer/views/dashboard');
     }
 }

@@ -13,25 +13,23 @@ function logout(req, res){
     res.render('auth/views/landing');
 }
 
-// SUB-MODULE-NAME FUNCTION
-/*
-    Bale functions muna bago mag router. Sa function, ganito format:
-
-    function function_name(req, res){
-        res.render('trainer/views/example');  //yung example di na need ng .pug extention
-    }
-*/
-function t_dash(req, res){
+//    FUNCTION
+function dashboard(req, res){
     res.render('trainer/views/dashboard');
 }
 
-// ---------- R O U T E R S ---------- //
+function trainee(req, res){
+    res.render('trainer/views/trainee');
+}
 
-// SUB-MODULE NAME ROUTER
-/*
-    Sa router naman ganito format:
+function pending(req, res){
+    res.render('trainer/views/pending');
+}
 
-    router.get('/urllink', function_name);
-*/
-router.get('/', t_dash);
+
+//    ROUTER
+router.get('/', dashboard);
+router.get('/trainee', trainee);
+router.get('/pending', pending);
+
 exports.trainer = router;

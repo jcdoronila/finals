@@ -29,9 +29,8 @@ script(src='/assets/js/sparkline-chart.js')
 script(src='/assets/js/multiple-select.js')
 
 
-
+//- burogeso
 script.
-  
   $(document).ready(function () {
   $('.table').DataTable();
   $('[data-toggle="popover"]').popover();
@@ -44,10 +43,24 @@ script.
   'maxTime': '10:00pm',
   });
   $('.ms').multipleSelect();
-  //- $("select.styled").customSelect();
-
-  	
   });
+
+//- sticky navbar
+script. 
+  window.onscroll = function () {
+  myFunction()
+  };
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+  function myFunction() {
+  if (window.pageYOffset >= sticky) {
+  navbar.classList.add("sticky")
+  } else {
+  navbar.classList.remove("sticky");
+  }
+  }
+
+//- return to top with animation
 script.
   $(window).scroll(function () {
     if ($(this).scrollTop() >= 50) {
@@ -61,5 +74,4 @@ script.
       scrollTop: 0
     }, 700);
   });
-  
 
