@@ -3,8 +3,8 @@ extends ./tr-sub-head
 block main	
 	#navbar-hidden
 		.container
-			a.icon(href='/')
-				img.img-circle.xs(src='assets/img/icon.png', style='border:3px solid white;', alt='')
+			a.icon(href='/trainer/dashboard')
+				img.img-circle.xs(src='../../assets/img/icon.png', style='border:3px solid white;', alt='')
 				b(style='font-size:15pt;margin-left: 10px; letter-spacing: 1px;') A-Team Fitness
 			span#header_inbox_bar.dropdown
 				a.dropdown-toggle(data-toggle='dropdown', href='#')
@@ -43,13 +43,13 @@ block main
 										| Logout
 	#navbar
 		.container
-			a(href='/')
+			a(href='/trainer/dashboard')
 				span.li_calendar
 				|  Calendar
-			a(href='trainer/trainee')
+			a(href='/trainer/trainee')
 				span.li_user
 				| Trainee
-			a(href='/pending')
+			a(href='/trainer/pending')
 				span.li_megaphone
 				| Pending Request
 
