@@ -1,4 +1,11 @@
 include ../../../templates/head
+append head
+  style.
+    h3 span{
+      margin-right:10px;
+    }
+
+
 block main
    section#main-content
        section.wrapper.site-min-height
@@ -76,7 +83,10 @@ block main
               //-         .value.tooltips(data-original-title='7.500', data-toggle='tooltip', data-placement='top') 75%
 
             .col-lg-3.ds
-              h3 MEMBERSHIP
+              
+              h3 
+                span.li_heart 
+                |  Membership
               .desc
                 .thumb
                   img.img-circle(src='assets/img/ui-divya.jpg', width='35px', height='35px', align='')
@@ -93,7 +103,9 @@ block main
                 .details
                   h6  Bronze Membership
 
-              h3 CLASS LIST
+              h3 
+                span.li_calendar 
+                |  Class List
               .desc
                 .thumb
                   img.img-circle(src='assets/img/ui-divya.jpg', width='35px', height='35px', align='')

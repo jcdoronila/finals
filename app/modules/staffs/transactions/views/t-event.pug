@@ -1,4 +1,4 @@
-include ../../../../templates/staff-portal-head
+include ../../../../templates/staff-head
 
 block main
 
@@ -11,9 +11,6 @@ block main
                 table.table.table-striped.table-advance.table-hover
                   h4
                     | All Events
-                    button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
-                      i.fa.fa-plus
-                      |  Add Event
                   thead
                     tr
                       th
@@ -53,80 +50,11 @@ block main
                       td 8:00AM - 9:00PM
                       td 51 
                       td
-                        .switch(style='width:50px;', data-on-label="<i class=' fa fa-check'></i>", data-off-label="<i class='fa fa-times'></i>")
-                          input(type='checkbox', checked='')
+                        span.label.label-success
+                          | Active
                       td
                         button#view.btn.btn-info.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='View')
                           i.fa.fa-search
-                        button#edit.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Edit')
-                          i.fa.fa-edit
-                        button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Remove')
-                          i.fa.fa-trash-alt
-
-//MODAL
-#add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-        h4#myModalLabel.modal-title Schedule an Event
-      form(action='', method='post')
-        .modal-body
-          .container-fluid
-            .container-fluid(style='padding:1rem 4rem 1rem 4rem;')
-              .row
-                .col-md-12
-                  .form-group
-                    label.control-label Event Name
-                    input.form-control(type='text')
-              .row
-                .col-md-6
-                  .form-group
-                    label.control-label Start Date
-                    input.form-control.date(type='text')
-                .col-md-6
-                  .form-group
-                    label.control-label End Date
-                    input.form-control.date(type='text')
-              .row
-                .col-md-12
-                  .form-group
-                    label.control-label Location
-                    select.form-control
-                      option.hidden Select Location...
-                      option Specific 
-                      option Interbranch
-                      option Sta. Mesa
-                      option Marikina
-              .row
-                .col-md-12
-                  .form-group
-                    label.control-label Specify Location
-                    input.form-control(type="text" disabled)
-              .row
-                .col-md-6
-                  .form-group
-                    label.control-label Start Time
-                    input.form-control.time(type='text')
-                .col-md-6
-                  .form-group
-                    label.control-label End Time
-                    input.form-control.time(type='text')
-              .row
-                .col-md-6
-                  .form-group
-                    label.control-label Availability
-                    select#branch.form-control
-                      option Select Availability... 
-                      option All 
-                      option Members Only
-                .col-md-6
-                  .form-group
-                    label.control-label Slot
-                    input.form-control(type='number' name='slot')
-        .modal-footer
-          button.btn.btn-default(type='button', data-dismiss='modal') Close
-          button.btn.btn-primary(type='button') Add Event
 
 //MODAL
 #view-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
@@ -138,10 +66,7 @@ block main
       form(action='', method='post')
         br
         .container-fluid
-      
           table.table.table-striped.table-advance.table-hover
-            
-              
             thead
               tr
                 th 
@@ -163,78 +88,9 @@ block main
         button.btn.btn-default(type='button', data-dismiss='modal') Close
         button.btn.btn-primary(type='button') Print
 
-          
-//MODAL
-#edit-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-  .modal-dialog
-    .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-        h4#myModalLabel.modal-title Schedule an Event
-      form(action='', method='post')
-        .modal-body
-          .container-fluid
-            .container-fluid(style='padding:1rem 4rem 1rem 4rem;')
-              .row
-                .col-md-12
-                  .form-group
-                    label.control-label Event Name
-                    input.form-control(type='text')
-              .row
-                .col-md-6
-                  .form-group
-                    label.control-label Start Date
-                    input.form-control.date(type='text')
-                .col-md-6
-                  .form-group
-                    label.control-label End Date
-                    input.form-control.date(type='text')
-              .row
-                .col-md-12
-                  .form-group
-                    label.control-label Location
-                    select.form-control
-                      option.hidden Select Location...
-                      option Specific 
-                      option Interbranch
-                      option Sta. Mesa
-                      option Marikina  
-              .row
-                .col-md-12
-                  .form-group
-                    label.control-label Specify Location
-                    input.form-control(type="text" disabled)
-              .row
-                .col-md-6
-                  .form-group
-                    label.control-label Start Time
-                    input.form-control.time(type='text')
-                .col-md-6
-                  .form-group
-                    label.control-label End Time
-                    input.form-control.time(type='text')
-              .row
-                .col-md-6
-                  .form-group
-                    label.control-label Availability
-                    select#branch.form-control
-                      option Select Availability... 
-                      option All 
-                      option Members Only
-                .col-md-6
-                  .form-group
-                    label.control-label Slot
-                    input.form-control(type='number' name='slot')
-          .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-primary(type='button') Save Event
-              
 include ../../../../templates/foot
 
 script.
-  $('#edit').click(function(){
-    $('#edit-modal').modal();
-  });
    $('#view').click(function(){
     $('#view-modal').modal();
   });

@@ -1,5 +1,8 @@
 block main
 
+a#return-to-top(href='javascript:')
+  i.fa.fa-angle-up
+
 footer.site-footer
   .text-center
     | 2018 - Team A-Fitness
@@ -42,6 +45,21 @@ script.
   });
   $('.ms').multipleSelect();
   //- $("select.styled").customSelect();
+
+  	
+  });
+script.
+  $(window).scroll(function () {
+    if ($(this).scrollTop() >= 50) {
+      $('#return-to-top').fadeIn(200);
+    } else {
+      $('#return-to-top').fadeOut(200);
+    }
+  });
+  $('#return-to-top').click(function () {
+    $('body,html').animate({
+      scrollTop: 0
+    }, 700);
   });
   
 

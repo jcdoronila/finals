@@ -1,36 +1,29 @@
 extends ./sub-head
 
 block main
-	//- script.
-	//- 	$(document).ready(function(){
-	//- 		var pathname = window.location.pathname;
-	//- 		$('ul > li > ul > li a[href="'+pathname'"]').parent().addClass('active').siblings()removeClass('active');
-	//- 	})
-	//- 	$(document).ready()=>{
-	//- 		$sidebar = $('sidebar');
-	//- 	}
 
 	section#container
 	// header start
 	header.header.black-bg
 		.sidebar-toggle-box
-			.fa.fa-bars.tooltips(data-placement='right', data-original-title='Toggle Navigation')
+			.fa.fa-bars.tooltips(data-placement='right', data-original-title='Toggle Navigation' style="color:white;")
 		// logo start
 		a.logo(href='/')
-			img(src='assets/img/icon.png', height='30px' width='30px')
+			img.img-circle(src='/assets/img/icon.png', style='border:3px solid white; width:30px; margin-right:10px; margin-left:10px;')
 			b  A-Team Fitness
 		// logo end
 		.top-menu
 			ul.nav.pull-right.top-menu
 				li
-					a.logout(href='/logout') Logout
+					a(href='/logout') 
+						i.fa.fa-sign-out-alt
 	aside
 	#sidebar.nav-collapse
 		// sidebar menu start
 		ul#nav-accordion.sidebar-menu
 			p.centered
 				a(href='/')
-					img.img-circle(src='assets/img/friends/fr-03.jpg', width='60')
+					img.img-circle(src='/assets/img/friends/fr-03.jpg', width='60')
 			h5.centered ADMIN
 			li.mt
 				a.active(href='/')
@@ -48,9 +41,6 @@ block main
 						a(href='/branch') Branch
 					li
 						a(href='/classes') Classes
-					//li
-						//a(href='/program') Programs
-					
 					li
 						a(href='/discount') Promo
 					li
