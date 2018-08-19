@@ -14,10 +14,29 @@ function dropMem(req, res, next){
     return next();
   })
 }
+//view special
+function viewSpecial(req, res, next){
+  db.query('SELECT * FROM tblspecial WHERE status=1',function(err, results, fields){
+    if(err) return res.send(err);
+    req.viewSpecial = results;
+    return next();
+  })
+}
+
+//view branch
+function viewBranch(req, res, next){
+  db.query('SELECT u.*, b.* from tbluser u join tblbranch b ON u.userid = b.user where u.usertype = 4  ',function(err, results, fields){
+      console.log(results)
+      if(err) return res.send(err);
+      req.viewBranch = results;
+      return next();
+    })
+}
+
 
 loginRouter.route('/')
-    .get(authMiddleware.adminNoAuth, dropMem, (req, res) => {
-        res.render('auth/views/landing', {drop: req.dropMem});
+    .get(authMiddleware.adminNoAuth,viewSpecial,viewBranch, dropMem, (req, res) => {
+        res.render('auth/views/landing', {drop: req.dropMem, specs: req.viewSpecial, bras: req.viewBranch});
     })
     // .get(authMiddleware.trainerNoAuth, (req, res) => {
     //     res.render('auth/views/landing', req.query);
@@ -118,12 +137,11 @@ loginRouter.route('/')
 
 signupRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
-        res.render('auth/views/login', req.query);
+        res.render('auth/views/landing', req.query);
     })
     .post((req, res) => {
         var db = require('../../lib/database')();
             var autogen= codegen();
-            UID = 'AMACOR'+('-'+randomId+'-'+'CM');
             fullname =(req.body.fname +" "+ req.body.lname);
             TIN = (req.body.tin1 +'-'+ req.body.tin2 +'-'+ req.body.tin3 +'-'+ req.body.tin4)
                 if(TIN == "undefined-undefined-undefined-undefined"){

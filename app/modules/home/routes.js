@@ -63,7 +63,7 @@ function viewStaff(req, res, next){
 }
 
 
-//insert program
+/*//insert program
 var indexController = require('./controllers/index');
 router.get('/', indexController);
 
@@ -77,7 +77,7 @@ router.post('/program', (req, res) => {
         }
         });
       
-  });
+  });*/
 
 
 //insert classes

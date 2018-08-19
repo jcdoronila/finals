@@ -171,40 +171,41 @@ html(lang='en')
                         select.form-control
                           each dr in drop
                             option.hidden Select Membership... 
-                            option #{dr.memname}-#{dr.membershipname} (#{dr.memperiod} Days)
+                            option(value='' + dr.memrateID) #{dr.memname}-#{dr.membershipname} (#{dr.memperiod} Days)
                             //- option Silver Membership - (120 days)
                             //- option Bronze Membership - (30 days)
-                  .row
-                    .col-md-5
-                      .form-group
-                        label.control-label Type of Membership
-                        select#type.form-control(name='type' value='NULL')
-                          option(value='1') Interbranch
-                          option(value='2') Exclusive
-                    .col-md-7(style='color:gray; font-size:10pt')
-                      i
-                        p
-                          | Interbranch - Membership valid to all branches.
-                          br
-                          | Exclusive - Membership valid only to the branch you choose.
-                        p(style='margin:0;') Note: Rates vary on type of membership. "Interbranch" costs more.
+                  //- .row
+                  //-   .col-md-5
+                  //-     .form-group
+                  //-       label.control-label Type of Membership
+                  //-       select#type.form-control(name='type' value='NULL')
+                  //-         option(value='1') Interbranch
+                  //-         option(value='2') Exclusive
+                  //-   .col-md-7(style='color:gray; font-size:10pt')
+                  //-     i
+                  //-       p
+                  //-         | Interbranch - Membership valid to all branches.
+                  //-         br
+                  //-         | Exclusive - Membership valid only to the branch you choose.
+                  //-       p(style='margin:0;') Note: Rates vary on type of membership. "Interbranch" costs more.
                   .row
                     .col-md-6
                       .form-group
                         label.control-label Branch
-                        select#branch.form-control(disabled='')
-                          option Sta. Mesa
-                          option Marikina
+                        select#branch.form-control
+                          each br in bras
+                            option.hidden(value='') Select Branch...
+                            option(value='' + br.branchID) #{br.branchname}
+                      i
+                        p
+                          | Only For Exclusive membership for interbranch leave it unfilled        
                     .col-md-6
                       .form-group
                         label.control-label Interested Area
                         select.form-control
-                          option Select Interest... 
-                          option Body Building
-                          option Weight Gain
-                          option Weight Loss
-                          option General Fitness
-                  .row
+                          each sp in specs
+                            option.hidden(value='') Select Interest... 
+                            option(value='' + sp.speciaID) #{sp.specialname}
                     .col-md-5
                       label.checkbox
                         | Are you a Student?
