@@ -114,11 +114,11 @@ html(lang='en')
                     .col-md-6
                       .form-group
                         label#fname.control-label First Name
-                        input.form-control(type='text')
+                        input.form-control(type='text' name='fname')
                     .col-md-6
                       .form-group
                         label.control-label Last Name
-                        input.form-control(type='text')
+                        input.form-control(type='text' name='lname')
                   .row
                     .col-md-6
                       .input-group
@@ -134,17 +134,17 @@ html(lang='en')
                     .col-md-6
                       .form-group
                         label.control-label Date of Birth
-                        input#datepicker.form-control(type='text')
+                        input#datepicker.form-control(type='text' name='bday')
                   .row
                     .col-md-12
                       .form-group
                         label.control-label Address
-                        input.form-control(type='text')
+                        input.form-control(type='text' name='addr')
                   .row
                     .col-md-6
                       .form-group
                         label.control-label Mobile Number
-                        input.form-control(type='text', value='+639')
+                        input.form-control(type='text', value='+639' name=mobile)
                     .col-md-6
                       .form-group
                         label.control-label Email
@@ -158,7 +158,7 @@ html(lang='en')
                     .col-md-12
                       .form-group
                         label.control-label Username
-                        input.form-control(type='text')
+                        input.form-control(type='text' name='username')
                 .row
                   .col-md-12
                     h5 More Information
@@ -168,31 +168,29 @@ html(lang='en')
                     .col-md-12
                       .form-group
                         label.control-label Membership
-                        select.form-control
-                          each dr in drop
+                        select.form-control(name='membership')
+                          each ct in cats
                             option.hidden Select Membership... 
-                            option(value='' + dr.memrateID) #{dr.memname}-#{dr.membershipname} (#{dr.memperiod} Days)
-                            //- option Silver Membership - (120 days)
-                            //- option Bronze Membership - (30 days)
+                            option(value='' + ct.memrateid) #{ct.memclassname} - #{ct.membershipname} (#{ct.memperiod} Days)
                   //- .row
                   //-   .col-md-5
                   //-     .form-group
                   //-       label.control-label Type of Membership
                   //-       select#type.form-control(name='type' value='NULL')
-                  //-         option(value='1') Interbranch
-                  //-         option(value='2') Exclusive
-                  //-   .col-md-7(style='color:gray; font-size:10pt')
-                  //-     i
-                  //-       p
-                  //-         | Interbranch - Membership valid to all branches.
-                  //-         br
-                  //-         | Exclusive - Membership valid only to the branch you choose.
-                  //-       p(style='margin:0;') Note: Rates vary on type of membership. "Interbranch" costs more.
+                  //-         each ct in cats
+                  //-           option(value='' + ct.memrateid) #{ct.memclassname} - #{ct.membershipname} (#{ct.memperiod} Days)
+                    .col-md-7(style='color:gray; font-size:10pt')
+                      i
+                        p
+                          | Interbranch - Membership valid to all branches.
+                          br
+                          | Exclusive - Membership valid only to the branch you choose.
+                        p(style='margin:0;') Note: Rates vary on type of membership. "Interbranch" costs more.
                   .row
                     .col-md-6
                       .form-group
                         label.control-label Branch
-                        select#branch.form-control
+                        select#branch.form-control(name='branch')
                           each br in bras
                             option.hidden(value='') Select Branch...
                             option(value='' + br.branchID) #{br.branchname}
@@ -202,10 +200,10 @@ html(lang='en')
                     .col-md-6
                       .form-group
                         label.control-label Interested Area
-                        select.form-control
+                        select.form-control(name='specs')
                           each sp in specs
                             option.hidden(value='') Select Interest... 
-                            option(value='' + sp.speciaID) #{sp.specialname}
+                            option(value='' + sp.specialID) #{sp.specialname}
                     .col-md-5
                       label.checkbox
                         | Are you a Student?
@@ -227,7 +225,7 @@ html(lang='en')
                           |  We will not accept your request until you are verified.
             .modal-footer
               button.btn.btn-default(type='button', data-dismiss='modal') Cancel
-              button#submit.btn.btn-primary(data-toggle='modal', data-dismiss='modal', data-target='#success', type='button') Register
+              button#submit.btn.btn-primary( type='submit') Register
     // modal
     #login.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
       .modal-dialog.modal-sm

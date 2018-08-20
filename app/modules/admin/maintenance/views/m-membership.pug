@@ -18,7 +18,7 @@ block main
                     tr
                       th
                         i.fa.fa-credit-card
-                        |  Name
+                        |  Class
                       th
                         i.fa.fa-home
                         |  Category
@@ -34,7 +34,7 @@ block main
                   each me in mems
                     tbody
                       tr
-                        td #{me.memname}
+                        td #{me.memclassname}
                         td #{me.membershipname}
                         td #{me.memperiod}
                         td #{me.memfee}
@@ -59,8 +59,14 @@ block main
                   .row
                     .col-md-12
                       .form-group
-                        label.control-label Membership Name
-                        input.form-control(type='text' name='memname')
+                  .row
+                    .col-md-12
+                      .form-group
+                        label.control-label Membership Class
+                        select#branch.form-control(name='class')
+                          each cl in classes
+                            option.hidden Choose Membership Class... 
+                            option(value=''+cl.memclassid) #{cl.memclassname}
                   .row
                     .col-md-12
                       .form-group
@@ -96,8 +102,14 @@ block main
                   .row
                     .col-md-12
                       .form-group
-                        label.control-label Membership Name
-                        input#memname.form-control(type='text' name='memname')
+                  .row
+                    .col-md-12
+                      .form-group
+                        label.control-label Membership Class
+                        select#branch.form-control(name='class')
+                          each cl in classes
+                            option.hidden Choose Membership Class... 
+                            option(value=''+cl.memclassid) #{cl.memclassname}
                   .row
                     .col-md-12
                       .form-group
