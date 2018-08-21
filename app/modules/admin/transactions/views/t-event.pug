@@ -232,6 +232,9 @@ block main
 include ../../../../templates/foot
 
 script.
+  $('.date').datepicker({
+    startDate: "today"
+  });
   $('#edit').click(function(){
     $('#edit-modal').modal();
   });
