@@ -1,0 +1,56 @@
+include ../../../templates/mem-head
+
+block main   
+  section(id='main-content centered')
+    section.wrapper.site-min-height
+      .row.mt.centered
+        h3
+          strong TRAINERS
+        .search-container
+          form(action='#')
+            input.t-search(name='search', placeholder='Search...', type='text')
+            button(type='submit')
+              i.fa.fa-search
+        // -- First Panel --
+        .col-lg-4.col-md-4.col-sm-4.mb
+          .content-panel.pn
+            .ptt-01(style='background: black;')
+              h3.panelh3 Henry Aports
+              h6.panelh6 ENDURANCE TRAINER
+            .viewProfile.centered
+              p.panelP VIEW PROFILE
+            div
+              h6.centered
+                strong Other specialties include:
+                br
+                | Kickboxing
+        // -- Second Panel --
+        .col-lg-4.col-md-4.col-sm-4.mb
+          .content-panel.pn
+            .ptt-01(style='background: black;')
+              h3.panelh3 Sandoval Dimasalang
+              h6.panelh6 FITNESS TRAINER
+            .viewProfile.centered
+              p.panelP VIEW PROFILE
+            div
+              h6.centered
+                strong Other specialties include:
+                br
+                | Bodybuilding, Taekwondo
+        // -- Third Panel --
+        .col-lg-4.col-md-4.col-sm-4.mb
+          .content-panel.pn
+            .ptt-01(style='background: black;')
+              h3.panelh3 Anne Rose Rigel
+              h6.panelh6 YOGA TRAINER
+            .viewProfile.centered
+              p.panelP VIEW PROFILE
+            div
+              h6.centered
+                strong Other specialties include:
+                br
+                | Dance, Zumba, Aerobics
+    // --/wrapper --
+  // /MAIN CONTENT
+
+include ../../../templates/foot
