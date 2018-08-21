@@ -3,7 +3,7 @@ extends ./tr-sub-head
 block main	
 	#navbar-hidden
 		.container
-			a.icon(href='/trainer/dashboard')
+			a.icon(href='/member/dashboard')
 				img.img-circle.xs(src='../../assets/img/icon.png', style='border:3px solid white;', alt='')
 				b(style='font-size:15pt;margin-left: 10px; letter-spacing: 1px;') A-Team Fitness
 			span#header_inbox_bar.dropdown
@@ -24,7 +24,7 @@ block main
 						a(href='/') See all pending request
 			div(style='float:right')
 				span.sm(style='font-size: 12pt;')
-					| Hello,
+					| Hello, 
 					b Rafhael
 				span.dropdown
 					img.img-circle.dropdown-toggle(data-toggle='dropdown', src='/assets/img/ui-zac.jpg', alt='')
@@ -43,14 +43,17 @@ block main
 										| Logout
 	#navbar
 		.container
-			a(href='/trainer/dashboard')
+			a(href='/member/profile')
 				span.li_calendar
-				|  Calendar
-			a(href='/trainer/trainee')
+				| Profile
+			a(href='/member/classevents')
 				span.li_user
-				| Trainee
-			a(href='/trainer/pending')
+				| Classes & Events
+			a(href='/member/trainers')
 				span.li_megaphone
-				| Pending Request
+				| Trainers
+			a(href='/member/announcements')
+				span.li_megaphone
+				| Announcements
 
 

@@ -390,7 +390,7 @@ router.post('/category/delete', (req, res) => {
       
  });
 
-//view membership
+//view category
 function viewCategory(req, res, next){
   db.query('SELECT * FROM tblcat WHERE status=1',function(err, results, fields){
     if(err) return res.send(err);
@@ -577,7 +577,7 @@ router.get('/', indexController);
 
 router.post('/membership', (req, res) => {
     
-      db.query("INSERT INTO tblmemrates ( memname, memfee, memperiod, memcat) VALUES ( ?, ?, ?, ?)",[req.body.memname, req.body.memfee, req.body.memdura, req.body.category],(err, results, fields)=>{
+      db.query("INSERT INTO tblmemrates ( memclass, memfee, memperiod, memcat) VALUES ( ?, ?, ?, ?)",[req.body.class, req.body.memfee, req.body.memdura, req.body.category],(err, results, fields)=>{
         if (err)
           console.log(err);
         else{
@@ -596,13 +596,22 @@ function viewcatdrop(req, res, next){
   })
 }
 
+//view class dropdowns
+function viewclassdrop(req, res, next){
+  db.query('SELECT * FROM tblmemclass WHERE status=1 ',function(err, results, fields){
+    if(err) return res.send(err);
+    req.viewclassdrop = results;
+    return next();
+  })
+}
+
 //edit membership
 var indexController = require('./controllers/index');
 router.get('/', indexController);
 
 router.post('/membership/edit', (req, res) => {
     
-      db.query("UPDATE tblmemrates SET  memname=?, memfee=?, memperiod=?, memcat=? WHERE memrateid=?",[req.body.memname, req.body.memfee, req.body.memdura, req.body.category, req.body.id],(err, results, fields)=>{
+      db.query("UPDATE tblmemrates SET  memclass=?, memfee=?, memperiod=?, memcat=? WHERE memrateid=?",[req.body.class, req.body.memfee, req.body.memdura, req.body.category, req.body.id],(err, results, fields)=>{
         if (err)
           console.log(err);
         else{
@@ -630,13 +639,70 @@ router.post('/membership/delete', (req, res) => {
 
 //view membership
 function viewMembership(req, res, next){
-  db.query('SELECT u.*, b.* from tblmemrates u join tblcat b ON u.memcat = b.membershipID where b.status=1',function(err, results, fields){
+  db.query('SELECT u.*, b.*, s.* from tblmemrates u inner join tblcat b ON u.memcat = b.membershipID JOIN tblmemclass s ON s.memclassid=u.memclass where b.status=1',function(err, results, fields){
     if(err) return res.send(err);
     req.viewMembership = results;
     return next();
   })
 }
 
+
+//insert membership classes
+var indexController = require('./controllers/index');
+router.get('/', indexController);
+
+router.post('/memclass', (req, res) => {
+    
+      db.query("INSERT INTO tblmemclass ( memclassname,memclassdesc, status) VALUES (?, ?,1)",[req.body.classname, req.body.classdesc],(err, results, fields)=>{
+        if (err)
+          console.log(err);
+        else{
+          res.redirect('/memclass');
+        }
+        });
+      
+  });
+
+/*edit membership class*/
+var indexController = require('./controllers/index');
+router.get('/', indexController);
+
+router.post('/memclass/edit', (req, res) => {
+    
+     db.query("UPDATE tblmemclass SET memclassname=?,memclassdesc=? WHERE memclassid=?",[req.body.classname, req.body.classdesc,req.body.id],(err, results, fields)=>{
+       if (err)
+         console.log(err);
+       else{
+         res.redirect('/memclass');
+       }
+       });
+      
+ });
+
+ //delete memebrship class
+var indexController = require('./controllers/index');
+router.get('/', indexController);
+
+router.post('/memclass/delete', (req, res) => {
+    
+     db.query("UPDATE tblmemclass SET status=2 WHERE memclassid=?",[req.body.id],(err, results, fields)=>{
+       if (err)
+         console.log(err);
+       else{
+         res.redirect('/memclass');
+       }
+       });
+      
+ });
+
+//view membership classes
+function viewHie(req, res, next){
+  db.query('SELECT * FROM tblmemclass WHERE status=1',function(err, results, fields){
+    if(err) return res.send(err);
+    req.viewHie = results;
+    return next();
+  })
+}
 
 //A-TEAM FITNESS FUNCTIONS
 
@@ -671,7 +737,7 @@ function general(req,res){
     res.render('admin/maintenance/views/m-general',{gens: req.viewGen});
 }
 function membership(req,res){
-    res.render('admin/maintenance/views/m-membership',{drops: req.viewcatdrop, mems: req.viewMembership});
+    res.render('admin/maintenance/views/m-membership',{drops: req.viewcatdrop, mems: req.viewMembership, classes:req.viewclassdrop});
 }
 /*function program(req,res){
     res.render('admin/maintenance/views/m-program', {programs: req.viewProgram});
@@ -684,6 +750,9 @@ function staff(req,res){
 }
 function trainer(req,res){
     res.render('admin/maintenance/views/m-trainer',{drops: req.viewbranchdrop,spes: req.viewspecialdrop, trains: req.viewTrainer});
+}
+function memclass(req,res){
+    res.render('admin/maintenance/views/m-mclasses', {Hays: req.viewHie});
 }
 
 // TRANSACTIONS
@@ -727,10 +796,11 @@ router.get('/classes', viewClass, classes );
 router.get('/discount', viewDiscount,discount);
 router.get('/facility',viewFac, facility);
 router.get('/general',viewGen, general);
-router.get('/membership',viewMembership,viewcatdrop, membership);
+router.get('/membership',viewclassdrop,viewMembership,viewcatdrop, membership);
 router.get('/specialization', viewSpecial,specs);
 router.get('/staff', viewStaff,staff );
 router.get('/trainer',viewTrainer,viewspecialdrop,viewbranchdrop, trainer);
+router.get('/memclass', viewHie, memclass );
 
 //TRANSACTIONS
 router.get('/t-class', t_class);

@@ -1,19 +1,39 @@
 var express = require('express');
 var loginRouter = express.Router();
 var logoutRouter = express.Router();
+var SignupRouter = express.Router();
 var db = require('../../lib/database')();
 // var nodemailer = require('nodemailer');
 
 var authMiddleware = require('./middlewares/auth');
 
 //view membership
-function dropMem(req, res, next){
-  db.query('SELECT u.*, b.* from tblmemrates u join tblcat b ON u.memcat = b.membershipID where b.status=1',function(err, results, fields){
+function viewMembership(req, res, next){
+  db.query('SELECT u.*, b.*, s.* from tblmemrates u inner join tblcat b ON u.memcat = b.membershipID JOIN tblmemclass s ON s.memclassid=u.memclass where b.status=1',function(err, results, fields){
     if(err) return res.send(err);
-    req.dropMem = results;
+    req.viewMembership = results;
     return next();
   })
 }
+
+//view membership classes
+function viewHie(req, res, next){
+  db.query('SELECT * FROM tblmemclass WHERE status=1',function(err, results, fields){
+    if(err) return res.send(err);
+    req.viewHie = results;
+    return next();
+  })
+}
+
+//view category
+/*function viewCategory(req, res, next){
+  db.query('SELECT * FROM tblcat WHERE status=1',function(err, results, fields){
+    if(err) return res.send(err);
+    req.viewCategory = results;
+    return next();
+  })
+}*/
+
 //view special
 function viewSpecial(req, res, next){
   db.query('SELECT * FROM tblspecial WHERE status=1',function(err, results, fields){
@@ -35,8 +55,8 @@ function viewBranch(req, res, next){
 
 
 loginRouter.route('/')
-    .get(authMiddleware.adminNoAuth,viewSpecial,viewBranch, dropMem, (req, res) => {
-        res.render('auth/views/landing', {drop: req.dropMem, specs: req.viewSpecial, bras: req.viewBranch});
+    .get(authMiddleware.adminNoAuth,viewSpecial,viewBranch, viewHie,viewMembership, (req, res) => {
+        res.render('auth/views/landing', {drop: req.viewHie, specs: req.viewSpecial, bras: req.viewBranch, cats:req.viewMembership});
     })
     // .get(authMiddleware.trainerNoAuth, (req, res) => {
     //     res.render('auth/views/landing', req.query);
@@ -127,7 +147,7 @@ loginRouter.route('/')
     });
 
 
-/*function codegen() {
+function codegen() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvqxyz1234567890";
     for (var i = 0; i < 7; i++)
@@ -135,7 +155,7 @@ loginRouter.route('/')
     return text;
     }
 
-signupRouter.route('/')
+SignupRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
         res.render('auth/views/landing', req.query);
     })
@@ -143,41 +163,37 @@ signupRouter.route('/')
         var db = require('../../lib/database')();
             var autogen= codegen();
             fullname =(req.body.fname +" "+ req.body.lname);
-            TIN = (req.body.tin1 +'-'+ req.body.tin2 +'-'+ req.body.tin3 +'-'+ req.body.tin4)
-                if(TIN == "undefined-undefined-undefined-undefined"){
-                    TIN = "null";
-                }
             code = autogen;
-                db.query("INSERT INTO tbluser ( intUID, strName, strEmail, strAddress, intContact, strPassword, strUserType, boolStatus, strStatus, strCompanyName, strUserTIN) VALUES ( ?, ?, ?, ?, ?, ?, 'user', 1, 'New', ?, ?) ",
-                    [ UID, fullname, req.body.email, req.body.address, req.body.number, code, req.body.comp, TIN], (err, results, fields)=>{
+                db.query("INSERT INTO tbluser (userfname, userlname, usergender, userbday, useraddress, usermobile, useremail, userusername, memrateid, branch, specialization, usertype,paymentcode ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 8, ? ) ",
+                    [ req.body.fname, req.body.lname, req.body.gen, req.body.bday, req.body.addr, req.body.mobile, req.body.email, req.body.username, req.body.membership, req.body.branch, req.body.specs, autogen], (err, results, fields)=>{
                     if (err) console.log(err);
                         else{
-                            mailer.sendMail({
+                            /*mailer.sendMail({
                                 from: 'amacortrading123@gmail.com',
                                 to: req.body.email,
                                 subject: 'User Password',
                                 html:
                                     "<center>"+
-                                    "<h2 style='background-color:#0095DD; width:50%; font-size:28px; padding:5px;'> AMACOR TRADING INTERNATIONAL </h2> </center>"+ "<hr>"+
-                                    "<p>Good Day " +fullname+ ", your user password is "+
+                                    "<h2 style='background-color:#ffbb00; width:50%; font-size:28px; padding:5px;'> A-TEAM FITNESS CENTER </h2> </center>"+ "<hr>"+
+                                    "<p> Greetings, " +fullname+ ", your payment code is: "+
                                     "<b style='font-size:15px; background:#5FAEE3; width:30%; padding:5px;'>" +code+ "</b></p>"+
-                                    "<p> You may change your password in your dashboard account </p>",
+                                    "<p> Please pay the amount to activate your account. Thanks </p>",
                                 template: 'send', //name ng html file na irerender
                                 },
                                 function(err, response){
                                     if(err){
-                                        console.log("Bad email");
+                                        console.log("Payment code NOT sent!");
                                         console.log(err);
                                     }
                                     else{
-                                        console.log("passcode sent");
+                                        console.log("Payment code sent!");
                                         }
                                     }
-                                );
-                            res.redirect('/signup?success');
+                                );*/
+                            res.redirect('/login');
                             }
                     });
-        });*/
+        });
 
 logoutRouter.get('/', (req, res) => {
     req.session.destroy(err => {
@@ -188,3 +204,4 @@ logoutRouter.get('/', (req, res) => {
 
 exports.login = loginRouter;
 exports.logout = logoutRouter;
+exports.Signup = SignupRouter

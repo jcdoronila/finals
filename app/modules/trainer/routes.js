@@ -29,7 +29,9 @@ function pending(req, res){
 
 //    ROUTER
 router.get('/', dashboard);
+router.get('/dashboard', dashboard);
 router.get('/trainee', trainee);
 router.get('/pending', pending);
+router.get('/logout', logout);
 
 exports.trainer = router;
