@@ -10,7 +10,7 @@ block main
               .container-fluid
                 table.table.table-striped.table-advance.table-hover
                   h4
-                    | Regular Exclusive Member
+                    | Regular Interbranch Member
                     button.btn.btn-theme(style='margin-left: 5px;', type='button', data-toggle='modal', data-target='#add')
                       i.fa.fa-user-plus
                       |  Add Member
@@ -21,8 +21,8 @@ block main
                         i.fa.fa-user
                         |  Name
                       th
-                        i.fa.fa-home
-                        |  Branch
+                        i.fa.fa-phone
+                        |  Contact
                       th
                         i.fa.fa-bookmark
                         |  Membership
@@ -30,21 +30,23 @@ block main
                         i.fa.fa-edit
                         |  Action
                   tbody
-                    each re in regs
-                      tr
-                        td.hidden-phone #{re.userfname} #{re.userlname}
-                        td  #{re.branchname}
-                        td  #{re.memclassname}-#{re.membershipname}                            
-                        td
-                          button#freeze.btn.btn-primary.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Freeze Account')
-                            i.fa.fa-snowflake
-                          button#edit.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Edit Account')
-                            i.fa.fa-edit
-                          button#train.btn.btn-warning.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Assign Trainer')
-                            i.fa.fa-dumbbell
-                          button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Suspend Account')
-                            i.fa.fa-exclamation-circle
-                          
+                    tr
+                    
+                      td.hidden-phone 
+                      td  09999888776
+                      td
+                        span.label.label-warning Gold
+                        |  - Interbranch
+                      td
+                        button#freeze.btn.btn-primary.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Freeze Account')
+                          i.fa.fa-snowflake
+                        button#edit.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Edit Account')
+                          i.fa.fa-edit
+                        button#train.btn.btn-warning.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Assign Trainer')
+                          i.fa.fa-dumbbell
+                        button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Suspend Account')
+                          i.fa.fa-exclamation-circle
+                        
           
     // MODAL ADD MEMBER
     #add.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')

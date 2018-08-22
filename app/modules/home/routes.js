@@ -17,7 +17,7 @@ router.post('/staff', (req, res) => {
         else{
           res.redirect('/staff');
         }
-        });
+        }); 
       
   });
 
@@ -403,7 +403,7 @@ function viewCategory(req, res, next){
 var indexController = require('./controllers/index');
 router.get('/', indexController);
 
-router.post('/trainer', (req, res) => {
+router.post('/trains', (req, res) => {
     
       db.query("INSERT INTO tbluser ( userfname, userlname,userbday,usergender,useraddress,usermobile,useremail,userschedule,usertype,branch,specialization,userpassword,userusername) VALUES ( ?, ?, ?, ?, ?, ? ,?, ?, 3, ?, ?, ?, ?)",[req.body.fname, req.body.lname, req.body.bday, req.body.gen, req.body.addr, req.body.mobile, req.body.email, req.body.sched.toString(), req.body.branchid, req.body.specialid, req.body.password, req.body.username],(err, results, fields)=>{
         if (err)
@@ -437,7 +437,7 @@ function viewspecialdrop(req, res, next){
 var indexController = require('./controllers/index');
 router.get('/', indexController);
 
-router.post('/trainer/edit', (req, res) => {
+router.post('/trains/edit', (req, res) => {
     
       db.query("UPDATE tbluser SET userfname=?, userlname=?,userbday=?,usergender=?,useraddress=?,usermobile=?,useremail=?,userschedule=?,branch=?,specialization=?,userpassword=?,userusername=? WHERE userid=?",[req.body.fname, req.body.lname, req.body.bday, req.body.gen, req.body.addr, req.body.mobile, req.body.email, req.body.sched.toString(), req.body.branchid, req.body.specialid, req.body.password, req.body.username, req.body.id],(err, results, fields)=>{
         if (err)
@@ -452,7 +452,7 @@ router.post('/trainer/edit', (req, res) => {
 var indexController = require('./controllers/index');
 router.get('/', indexController);
 
-router.post('/trainer/delete', (req, res) => {
+router.post('/trains/delete', (req, res) => {
     
       db.query("DELETE FROM tbluser WHERE userid=?",[req.body.id],(err, results, fields)=>{
         if (err)
@@ -706,9 +706,6 @@ function viewHie(req, res, next){
 
 //Transactions
 
-
-
-
 //view pending
 function viewPend(req, res, next){
   db.query('SELECT * FROM tbluser WHERE usertype=8 or usertype=9',function(err, results, fields){
@@ -741,7 +738,7 @@ router.get('/', indexController);
 router.post('/pending/update', (req, res) => {
     
   if(req.body.newcode===req.body.codenow)
-     db.query("UPDATE tbluser SET  signdate=?,usertype=1 WHERE userid=?",[req.body.currdate,req.body.newid],(err, results, fields)=>{
+     db.query("UPDATE tbluser SET  signdate=?,usertype=2 WHERE userid=?",[req.body.currdate,req.body.newid],(err, results, fields)=>{
        if (err)
          console.log(err);
        else{
@@ -753,6 +750,17 @@ router.post('/pending/update', (req, res) => {
   } 
       
  });
+
+
+//view of regular exclusive members
+function viewReg(req, res, next){
+  db.query('SELECT DISTINCT u.*, bn.branchname, memrate.memclassname, memrate.membershipname FROM tbluser u INNER JOIN tblbranch AS bn ON bn.branchid = u.branch INNER JOIN (select mr.memrateid, mc.memclassname, tc.membershipname FROM tblmemrates mr INNER JOIN tblmemclass AS mc ON mc.memclassid = mr.memclass INNER JOIN tblcat AS tc ON tc.membershipid = mr.memcat) AS MemRate WHERE u.usertype=2 GROUP BY u.userid',function(err, results, fields){
+    if(err) return res.send(err);
+    req.viewReg = results;
+    return next();
+  })
+}
+
 
 //A-TEAM FITNESS FUNCTIONS
 
@@ -798,7 +806,7 @@ function specs(req,res){
 function staff(req,res){
     res.render('admin/maintenance/views/m-staff', {staffs: req.viewStaff});
 }
-function trainer(req,res){
+function trains(req,res){
     res.render('admin/maintenance/views/m-trainer',{drops: req.viewbranchdrop,spes: req.viewspecialdrop, trains: req.viewTrainer});
 }
 function memclass(req,res){
@@ -829,8 +837,12 @@ function personal(req,res){
     res.render('admin/transactions/views/t-personal');
 }
 function regular(req,res){
-    res.render('admin/transactions/views/t-regular');
+    res.render('admin/transactions/views/t-regular', {regs: req.viewReg});
 }
+function Interregular(req,res){
+    res.render('admin/transactions/views/t-interregular');
+}
+
 
 //A-TEAM FITNESS GETS
 
@@ -849,7 +861,7 @@ router.get('/general',viewGen, general);
 router.get('/membership',viewclassdrop,viewMembership,viewcatdrop, membership);
 router.get('/specialization', viewSpecial,specs);
 router.get('/staff', viewStaff,staff );
-router.get('/trainer',viewTrainer,viewspecialdrop,viewbranchdrop, trainer);
+router.get('/trains',viewTrainer,viewspecialdrop,viewbranchdrop, trains);
 router.get('/memclass', viewHie, memclass );
 
 //TRANSACTIONS
@@ -860,7 +872,8 @@ router.get('/income', income);
 router.get('/payment', payment);
 router.get('/pending',viewUpdate,viewPend, pending);
 router.get('/personal', personal);
-router.get('/regular', regular);
+router.get('/regular',viewReg,regular) ;
+router.get('/interregular',Interregular);
 /**
  * Here we just export said router on the 'index' property of this module.
  */

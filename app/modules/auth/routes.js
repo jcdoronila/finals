@@ -133,14 +133,14 @@ loginRouter.route('/')
                 console.log(req.session);
                 return res.redirect('/');
             }
-                else if (user.usertype == 2)
+                else if (user.usertype == 3)
                 {
                     delete user.password;
                     req.session.trainer = user;
                     console.log(req.session);
                     return res.redirect('/trainer');
                 }
-                    else if (user.usertype == 3)
+                    else if (user.usertype == 2)
                     {
                         delete user.password;
                         req.session.member = user;

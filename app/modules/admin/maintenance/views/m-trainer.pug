@@ -49,7 +49,7 @@ block main
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h4#myModalLabel.modal-title Register a Trainer
-          form(action='/trainer', method='POST')
+          form(action='/trains', method='POST')
             .modal-body
               .container-fluid
                 .row
@@ -224,7 +224,7 @@ block main
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h4#myModalLabel.modal-title Edit a Trainer
-          form(action='/trainer/edit', method='POST')
+          form(action='/trains/edit', method='POST')
             .modal-body
               .container-fluid
                 .row
@@ -351,7 +351,7 @@ block main
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h4#myModalLabel.modal-title Remove Trainer
-          form(action='/trainer/delete', method='POST')
+          form(action='/trains/delete', method='POST')
             .modal-body
               .container-fluid
                 .container-fluid(style='padding:1rem 4rem 1rem 4rem;')
