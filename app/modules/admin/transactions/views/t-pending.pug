@@ -19,15 +19,16 @@ block main
 											i.fa.fa-edit
 											|  Action
 									tbody 
-										tr 
-											td John Doe
-											td 
-												button.btn.btn-info.btn-xs(type='button', data-toggle='modal', data-target='#viewmodal' )
-													i.fa.fa-search
-												button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Accept', data-target='#code')
-													i.fa.fa-check
-												button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Reject')
-													i.fa.fa-times
+										each pe in pends
+											tr 
+												td #{pe.userfname} #{pe.userlname}
+												td 
+													button.btn.btn-info.btn-xs(type='button', data-toggle='modal', data-target='#viewmodal' )
+														i.fa.fa-search
+													button#edit.btn.btn-success.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Accept', data-target='#code' data-id=pe.userid data-code=pe.paymentcode)
+														i.fa.fa-check
+													button.btn.btn-danger.btn-xs(data-toggle='modal', data-trigger='hover', data-placement='top', data-content='Reject')
+														i.fa.fa-times
 				// /content-panel
 
 			// VIEW
@@ -118,7 +119,7 @@ block main
 											.col-md-12
 												.form-group
 													h4 Delete this staff?
-											input.hidden#id(type='text' name='id')
+											input#id(type='text' name='id')
 
 							.modal-footer
 								button.btn.btn-default(type='button', data-dismiss='modal') Close
@@ -130,15 +131,17 @@ block main
 						.modal-header
 							button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
 							h4#myModalLabel.modal-title Accept Membership
-						form(action='/', method='')
+						form(action='/pending/update', method='POST')
 							.modal-body
 								.container-fluid
 									.row
 										.col-md-12
 											.form-group
 												label.control-label Enter Code
-												input.form-control(type='text')
-												input.hidden#id(type='text' name='id')
+												input.form-control(type='text' name='newcode')
+												input#id(type='text' name='newid' )
+												input#thedate(type='text' name='currdate')
+												input#code(type='text' name='codenow')
 
 							.modal-footer
 								button.btn.btn-default(type='button', data-dismiss='modal') Close
@@ -146,13 +149,44 @@ block main
 
 
 include ../../../../templates/foot
-script.
-	$('#is-not-student').hide();
-	$('#is-student').show();
-	$('#accept').click(function(){
-		$('#code').modal();
-		$('#viewmodal').modal('hide');
-	});
+//- script.
+//- 	$('#is-not-student').hide();
+//- 	$('#is-student').show();
+//- 	$('#accept').click(function(){
+//- 		$('#code').modal();
+//- 		$('#viewmodal').modal('hide');
+//- 	});
 
-    
- 
+script.
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+			dd = '0'+dd
+	} 
+
+	if(mm<10) {
+			mm = '0'+mm
+	} 
+
+	today = yyyy + '-' + mm + '-' + dd;
+
+	document.getElementById("thedate").value = today;
+
+script.
+
+	$('#code').on('show.bs.modal', function(event){
+			var button = $(event.relatedTarget)      
+			//id
+			var id = button.data('id')
+			var code = button.data('code')
+			console.log(id)
+
+
+			let modal = $(this)     
+
+			modal.find('.modal-body #id').val(` ${id}`)
+			modal.find('.modal-body #code').val(` ${code}`)
+		})

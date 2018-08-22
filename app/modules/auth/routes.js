@@ -3,9 +3,29 @@ var loginRouter = express.Router();
 var logoutRouter = express.Router();
 var SignupRouter = express.Router();
 var db = require('../../lib/database')();
-// var nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
+var hbs = require('nodemailer-express-handlebars');
 
 var authMiddleware = require('./middlewares/auth');
+
+var mailer = nodemailer.createTransport({
+    service: 'gmail',
+    port: 25,
+    secure: true,
+    auth:{
+        user: 'ateamsupmanila@gmail.com',
+        pass: 'ateammanila'
+    },
+    tls:{
+        rejectUnauthorized:false
+    }
+});
+mailer.use('compile', hbs({
+    viewpath: '',
+    extname:'.html'
+}));
+
+
 
 //view membership
 function viewMembership(req, res, next){
@@ -155,6 +175,7 @@ function codegen() {
     return text;
     }
 
+
 SignupRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
         res.render('auth/views/landing', req.query);
@@ -168,10 +189,10 @@ SignupRouter.route('/')
                     [ req.body.fname, req.body.lname, req.body.gen, req.body.bday, req.body.addr, req.body.mobile, req.body.email, req.body.username, req.body.membership, req.body.branch, req.body.specs, autogen], (err, results, fields)=>{
                     if (err) console.log(err);
                         else{
-                            /*mailer.sendMail({
-                                from: 'amacortrading123@gmail.com',
-                                to: req.body.email,
-                                subject: 'User Password',
+                            mailer.sendMail({
+                                from: 'ateamsupmanila@gmail.com',
+                                to:req.body.email,
+                                subject:'Payment Code ',
                                 html:
                                     "<center>"+
                                     "<h2 style='background-color:#ffbb00; width:50%; font-size:28px; padding:5px;'> A-TEAM FITNESS CENTER </h2> </center>"+ "<hr>"+
@@ -189,7 +210,7 @@ SignupRouter.route('/')
                                         console.log("Payment code sent!");
                                         }
                                     }
-                                );*/
+                                );
                             res.redirect('/login');
                             }
                     });

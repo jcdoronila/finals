@@ -704,6 +704,56 @@ function viewHie(req, res, next){
   })
 }
 
+//Transactions
+
+
+
+
+//view pending
+function viewPend(req, res, next){
+  db.query('SELECT * FROM tbluser WHERE usertype=8 or usertype=9',function(err, results, fields){
+    if(err) return res.send(err);
+    req.viewPend = results;
+    return next();
+  })
+}
+
+//view update interbranch
+function viewUpdate(req, res,next){
+   db.query("UPDATE tbluser u  join tblmemrates m ON u.memrateid=m.memrateid SET u.branch=NULL, u.usertype=9 where m.memcat=4 AND signdate=NULL",(err, results, fields)=>{
+       if (err)
+         console.log(err);
+
+       else{
+          console.log('AAAAAAAA')
+            return next()
+        }
+
+;
+       })
+};
+   
+
+//update of pending to regular
+var indexController = require('./controllers/index');
+router.get('/', indexController);
+
+router.post('/pending/update', (req, res) => {
+    
+  if(req.body.newcode===req.body.codenow)
+     db.query("UPDATE tbluser SET  signdate=?,usertype=1 WHERE userid=?",[req.body.currdate,req.body.newid],(err, results, fields)=>{
+       if (err)
+         console.log(err);
+       else{
+         res.redirect('/regular');
+       }
+       });
+  else{
+    res.redirect('/pending/none');
+  } 
+      
+ });
+
 //A-TEAM FITNESS FUNCTIONS
 
 // GENERAL
@@ -773,7 +823,7 @@ function payment(req,res){
     res.render('admin/transactions/views/t-payment');
 }
 function pending(req,res){
-    res.render('admin/transactions/views/t-pending');
+    res.render('admin/transactions/views/t-pending',{pends: req.viewPend});
 }
 function personal(req,res){
     res.render('admin/transactions/views/t-personal');
@@ -808,7 +858,7 @@ router.get('/t-event', t_event);
 router.get('/freezed', freezed);
 router.get('/income', income);
 router.get('/payment', payment);
-router.get('/pending', pending);
+router.get('/pending',viewUpdate,viewPend, pending);
 router.get('/personal', personal);
 router.get('/regular', regular);
 /**

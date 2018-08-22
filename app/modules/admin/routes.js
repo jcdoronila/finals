@@ -262,7 +262,6 @@ router.post('/branch',addid, (req, res) => {
           if (err)
             console.log(err);
           else{
-            console.log(results)
             res.redirect('/branch');
           }
           });

@@ -23,28 +23,21 @@ function profile(req, res){
 function pricing(req, res){
     res.render('member/views/pricing');
 }
-function eventss(req, res){
-    res.render('member/views/events');
-}
-function classes(req, res){
-    res.render('member/views/classes');
+function classevents(req, res){
+    res.render('member/views/classevents');
 }
 function announcements(req, res){
     res.render('member/views/announcements');
 }
-function trainer(req, res){
-    res.render('member/views/trainer');
-}
+
 
 //    ROUTER
 router.get('/', dashboard);
 router.get('/dashboard', dashboard);
 router.get('/profile', profile);
 router.get('/pricing', pricing);
-router.get('/classes', classes);
-router.get('/events', eventss);
+router.get('/classevents', classevents);
 router.get('/announcements', announcements);
-router.get('/trainer', trainer);
 router.get('/logout', logout);
 
 exports.member = router;
