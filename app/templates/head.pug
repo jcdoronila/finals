@@ -26,78 +26,78 @@ block main
 					img.img-circle(src='/assets/img/friends/fr-03.jpg', width='60')
 			h5.centered ADMIN
 			li.mt
-				a.active(href='/')
+				a#dashboard(href='/')
 					i.fa.fa-tachometer-alt
 					span Dashboard
 			li.sub-menu
-				a(href='javascript:;')
+				a#memdrop(href='javascript:;')
 					i.fa.fa-wrench
 					span Maintenance
 					i.fa.fa-caret-down(style='margin-left:5px;')
 				ul.sub
-					li
+					li#staffs
 						a(href='/staff') Staffs
-					li
+					li#branch
 						a(href='/branch') Branch
-					li
+					li#classes
 						a(href='/classes') Classes
-					li
+					li#promo
 						a(href='/discount') Promo
-					li
+					li#memclass
 						a(href='/memclass') Membership Classes	
-					li
+					li#memcateg
 						a(href='/category') Membership Category
 					li.sub-menu
-						a(href='javascript:;')
+						a#ratesDrop(href='javascript:;')
 							span Rates
 							i.fa.fa-caret-down(style='margin-left:5px;')
 						ul.sub
-							li
+							li#memrates
 								a(href='/membership') Membership Rates
-							li
+							li#facilityrates
 								a(href='/facility') Facility Rates
-							li
+							li#genrates
 								a(href='/general') General Fees
 					li.sub-menu
-						a(href='javascript:;')
+						a#trainerDrop(href='javascript:;')
 							span Trainer
 							i.fa.fa-caret-down(style='margin-left:5px;')
 						ul.sub
-							li
+							li#specialization
 								a(href='/specialization') Specialization
-							li
-								a(href='/trains') Trainers
+							li#trainer
+								a(href='/trainer') Trainers
 				li.sub-menu
-					a(href='javascript:;')
+					a#transactionDrop(href='javascript:;')
 						i.fa.fa-book
 						span Transaction
 						i.fa.fa-caret-down(style='margin-left:5px;')
 					ul.sub
-						li
+						li#pending
 							a(href='/pending') Pending Request
 						li.sub-menu
-							a(href='javascript:;')
+							a#memberDrop(href='javascript:;')
 								span Members
 								i.fa.fa-caret-down(style='margin-left:5px;')
 							ul.sub
-								li
-									a(href='/regular') Regular Exclusive
-								li
-									a(href='/interregular') Regular Interbranch
-								li
+								li#exclusive
+									a(href='/regular') Exclusive
+								li#interbranch
+									a(href='/interregular') Interbranch
+								li#freezed
 									a(href='/freezed') Freezed
 						li.sub-menu
-							a(href='javascript:;')
+							a#trainerAssDrop(href='javascript:;')
 								span Trainer Assignment
 								i.fa.fa-caret-down(style='margin-left:5px;')
 							ul.sub
-								li
+								li#pt
 									a(href='/personal') Personal Training
-								li
+								li#group
 									a(href='/t-class') Group Classes
-						li
+						li#event
 							a(href='/t-event') Event
-						li
+						li#payment
 							a(href='/payment') Payment
 					
 				li.sub-menu

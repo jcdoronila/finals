@@ -136,41 +136,54 @@ block main
 										button.btn.btn-default(type='submit') Delete
 
 include ../../../../templates/foot
+
+script.
+	$(document).ready(function(){
+	$('#memdrop').addClass('active');
+	$('#branch').addClass('active');
+	});
+	
 script.
 
 	$('#editmodal').on('show.bs.modal', function(event){
-		var button = $(event.relatedTarget)      
+	var button = $(event.relatedTarget)      
 
 
-		var name = button.data('name')
-		var sname = button.data('sname')
-		var id = button.data('id')
-		var snum=button.data('snum')
-		var city=button.data('city')
-		var oldid=button.data('oldid')
+	var name = button.data('name')
+	var sname = button.data('sname')
+	var id = button.data('id')
+	var snum=button.data('snum')
+	var city=button.data('city')
+	var oldid=button.data('oldid')
 
-		let modal = $(this)  
-		modal.find('.modal-body #name').val(` ${name}`)   
-		modal.find('.modal-body #sname').val(` ${sname}`)
-		modal.find('.modal-body #city').val(` ${city}`)
-		modal.find('.modal-body #snum').val(` ${snum}`)
-		modal.find('.modal-body #id').val(` ${id}`)
-		modal.find('.modal-body #oldid').val(` ${oldid}`)
-	}) 
-script.
+	let modal = $(this)  
+	modal.find('.modal-body #name').val(` ${name}`)   
+	modal.find('.modal-body #sname').val(` ${sname}`)
+	modal.find('.modal-body #city').val(` ${city}`)
+	modal.find('.modal-body #snum').val(` ${snum}`)
+	modal.find('.modal-body #id').val(` ${id}`)
+	modal.find('.modal-body #oldid').val(` ${oldid}`)
+		}) 
+
+
+	script.
 
 	$('#deletemodal').on('show.bs.modal', function(event){
 		var button = $(event.relatedTarget)      
 
+	//id
+	var id = button.data('id')
+	console.log(id)
+	var oldid=button.data('oldid')
 
-		//id
-		var id = button.data('id')
-		console.log(id)
-		var oldid=button.data('oldid')
 
+	let modal = $(this)     
 
-		let modal = $(this)     
-
-		modal.find('.modal-body #id').val(` ${id}`)
-		modal.find('.modal-body #oldid').val(` ${oldid}`)
+	modal.find('.modal-body #id').val(` ${id}`)
+	modal.find('.modal-body #oldid').val(` ${oldid}`)
 	})
+
+	$(document).ready(function(){
+	$('#memdrop').addClass('active');
+	$('#branch').addClass('active');
+	});

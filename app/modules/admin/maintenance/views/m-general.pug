@@ -147,6 +147,13 @@ block main
 include ../../../../templates/foot
 
 script.
+  
+  $(document).ready(function(){
+  $('#memdrop').addClass('active');
+  $('#ratesDrop').addClass('active');
+  $('#genrates').addClass('active');
+  });
+
   $('#editmodal').on('show.bs.modal', function(event){
     var button = $(event.relatedTarget)      
 

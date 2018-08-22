@@ -368,6 +368,11 @@ block main
 
 include ../../../../templates/foot
 script.
+    
+    $(document).ready(function(){
+    $('#memdrop').addClass('active');
+    $('#trainer').addClass('active');
+    });
 
     $('#viewmodal').on('show.bs.modal', function(event){
         var button = $(event.relatedTarget)      

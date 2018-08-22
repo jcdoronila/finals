@@ -146,16 +146,21 @@ block main
 include ../../../../templates/foot
 script.
 
-      $('#viewmodal').on('show.bs.modal', function(event){
-        let button = $(event.relatedTarget) 
-        let name = button.data('name')
-        console.log(name)
-        let desc = button.data('desc')
-        console.log(desc)
-        let modal = $(this)     
-        modal.find('.modal-body span#name').text(` ${name}`)  
-        modal.find('.modal-body span#desc').text(` ${desc}`)  
-    })
+  $(document).ready(function(){
+  $('#memdrop').addClass('active');
+  $('#classes').addClass('active');
+  });
+
+  $('#viewmodal').on('show.bs.modal', function(event){
+    let button = $(event.relatedTarget) 
+    let name = button.data('name')
+    console.log(name)
+    let desc = button.data('desc')
+    console.log(desc)
+    let modal = $(this)     
+    modal.find('.modal-body span#name').text(` ${name}`)  
+    modal.find('.modal-body span#desc').text(` ${desc}`)  
+  })
 
 script.
     $('#editmodal').on('show.bs.modal', function(event){

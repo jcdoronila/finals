@@ -176,6 +176,11 @@ script.
 	document.getElementById("thedate").value = today;
 
 script.
+	$(document).ready(function(){
+		$('#transactionDrop').addClass('active');
+		$('#pending').addClass('active');
+		});
+
 
 	$('#code').on('show.bs.modal', function(event){
 			var button = $(event.relatedTarget)      

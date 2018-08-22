@@ -130,6 +130,12 @@ block main
               button.btn.btn-default(type='submit') Delete
 
 include ../../../../templates/foot
+
+script.
+  $(document).ready(function(){
+  $('#memdrop').addClass('active');
+  $('#memcateg').addClass('active');
+  });
 script.
 
       $('#viewmodal').on('show.bs.modal', function(event){

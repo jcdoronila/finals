@@ -232,6 +232,15 @@ block main
 include ../../../../templates/foot
 
 script.
+  $(document).ready(function(){
+    $('#transactionDrop').addClass('active');
+    $('#event').addClass('active');
+    });
+
+
+  $('.date').datepicker({
+    startDate: "today"
+  });
   $('#edit').click(function(){
     $('#edit-modal').modal();
   });

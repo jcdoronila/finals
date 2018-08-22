@@ -179,6 +179,12 @@ block main
 include ../../../../templates/foot
 
 script.
+	$(document).ready(function(){
+	$('#transactionDrop').addClass('active');
+	$('#payment').addClass('active');
+	});
+
+
 	$('#view').click(function(){
 		$('#view-modal').modal();
 	});

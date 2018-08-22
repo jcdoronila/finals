@@ -230,6 +230,13 @@ block main
               
 include ../../../../templates/foot
 script.
+
+   $(document).ready(function(){
+    $('#transactionDrop').addClass('active');
+    $('#trainerAssDrop').addClass('active');
+    $('#group').addClass('active');
+    });
+
   $('#edit').click(function(){
     $('#edit-modal').modal()
   });

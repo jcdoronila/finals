@@ -9,14 +9,14 @@ footer.site-footer
 
 script(src='/assets/js/jquery.js')
 script(src='/assets/js/jquery-ui-1.9.2.custom.min.js')
-script(src='/assets/js/jquery-ui.min.js')
+//- script(src='/assets/js/jquery-ui.min.js')
 script(src='/assets/js/jquery.dataTables.min.js')
 script.include(src='/assets/js/jquery.dcjqaccordion.2.7.js')
 script(src='/assets/js/jquery.scrollTo.min.js')
 script(src='/assets/js/jquery.nicescroll.js')
 script(src='/assets/js/jquery.timepicker.min.js')
 //- script(src='../../assets/js/jquery-1.8.3.min.js')
-
+script(src='/assets/js/bootstrap-datepicker.js')
 script(src='/assets/js/fullcalendar/fullcalendar.min.js')
 script(src='/assets/js/bootstrap.min.js')
 script(src='/assets/js/dataTables.bootstrap.min.js')
@@ -27,6 +27,7 @@ script(src='/assets/js/gritter-conf.js')
 script(src='/assets/js/bootstrap-switch.js')
 script(src='/assets/js/sparkline-chart.js')
 script(src='/assets/js/multiple-select.js')
+script(src='/assets/js/moment.js')
 
 
 //- burogeso
@@ -52,6 +53,7 @@ script.
   };
   var navbar = document.getElementById("navbar");
   var sticky = navbar.offsetTop;
+
   function myFunction() {
   if (window.pageYOffset >= sticky) {
   navbar.classList.add("sticky")
@@ -74,4 +76,3 @@ script.
       scrollTop: 0
     }, 700);
   });
-
