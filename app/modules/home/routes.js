@@ -717,7 +717,7 @@ function viewPend(req, res, next){
 
 //view update interbranch
 function viewUpdate(req, res,next){
-   db.query("UPDATE tbluser u  join tblmemrates m ON u.memrateid=m.memrateid SET u.branch=NULL, u.usertype=9 where m.memcat=4 AND signdate=NULL",(err, results, fields)=>{
+   db.query("UPDATE tbluser u join tblmemrates m ON u.memrateid=m.memrateid SET u.branch=NULL, u.usertype=9 where m.memcat=4 AND u.signdate IS NULL",(err, results, fields)=>{
        if (err)
          console.log(err);
 
@@ -742,7 +742,7 @@ router.post('/pending/update', (req, res) => {
        if (err)
          console.log(err);
        else{
-         res.redirect('/regular');
+         res.redirect('/pending');
        }
        });
   else{
