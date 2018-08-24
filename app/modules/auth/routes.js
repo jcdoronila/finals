@@ -180,6 +180,7 @@ SignupRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
         res.render('auth/views/landing', req.query);
     })
+
     .post((req, res) => {
         var db = require('../../lib/database')();
             var autogen= codegen();
@@ -225,4 +226,4 @@ logoutRouter.get('/', (req, res) => {
 
 exports.login = loginRouter;
 exports.logout = logoutRouter;
-exports.Signup = SignupRouter
+exports.signup = SignupRouter

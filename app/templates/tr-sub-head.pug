@@ -111,6 +111,7 @@ head
       border-radius: 35px;
       display: none;
       transition: all 2 ease;
+      z-index:1000;
     }
 
     #return-to-top i {
@@ -122,10 +123,12 @@ head
       font-size: 24pt;
       font-weight: bold;
       transition: all 0.3s ease;
+     
     }
 
     #return-to-top:hover {
       background-color: rgb(25, 27, 34);
+     
     }
 
     #return-to-top:hover i {
@@ -168,6 +171,16 @@ head
       #navbar-hidden .sm {
         display: none !important;
       }
+    }
+
+    
+    footer.site-footer {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
     }
 
 block main
