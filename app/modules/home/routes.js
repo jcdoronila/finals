@@ -754,7 +754,7 @@ router.post('/pending/update', (req, res) => {
 
 //view of regular exclusive members
 function viewReg(req, res, next){
-  db.query('SELECT DISTINCT u.*, bn.branchname, memrate.memclassname, memrate.membershipname FROM tbluser u INNER JOIN tblbranch AS bn ON bn.branchid = u.branch INNER JOIN (select mr.memrateid, mc.memclassname, tc.membershipname FROM tblmemrates mr INNER JOIN tblmemclass AS mc ON mc.memclassid = mr.memclass INNER JOIN tblcat AS tc ON tc.membershipid = mr.memcat) AS MemRate WHERE u.usertype=2 GROUP BY u.userid',function(err, results, fields){
+  db.query('SELECT u.*, bn.branchname, memrate.memclassname, memrate.membershipname FROM tbluser u INNER JOIN tblbranch AS bn ON bn.branchid = u.branch INNER JOIN (select mr.memrateid, mc.memclassname, tc.membershipname FROM tblmemrates mr INNER JOIN tblmemclass AS mc ON mc.memclassid = mr.memclass INNER JOIN tblcat AS tc ON tc.membershipid = mr.memcat Group by mr.memrateid ) AS MemRate WHERE u.memrateid=memrate.memrateid and usertype=2',function(err, results, fields){
     if(err) return res.send(err);
     req.viewReg = results;
     return next();

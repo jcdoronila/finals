@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: dbdecaps
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.19-MariaDB
+-- Server version	5.7.21-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -280,14 +280,14 @@ CREATE TABLE `tbluser` (
   CONSTRAINT `branch` FOREIGN KEY (`branch`) REFERENCES `tblbranch` (`branchID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `memrateid` FOREIGN KEY (`memrateid`) REFERENCES `tblmemrates` (`memrateid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `specialization` FOREIGN KEY (`specialization`) REFERENCES `tblspecial` (`specialID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tbluser`
 --
 
-INSERT INTO `tbluser` VALUES (9,NULL,NULL,'admin','12345',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(36,'Joshua','Ganila','ganila@gmail.com','11234',4,NULL,NULL,'+639123456789',NULL,NULL,NULL,NULL,NULL,'Inactive','Flash',NULL,NULL,NULL),(37,'Jethro','Samson','jethro@gmail.com','221345',3,NULL,5,'+639089765432','El Pueblo A-120 Sta. Mesa Manila','male','Monday,Tuesday,Wednesday','08/02/2018',4,NULL,'Jethpogi',NULL,NULL,NULL),(50,'Vince','Oreta','tlovince14@gmail.com',NULL,2,NULL,NULL,NULL,'Bayumbong St Tondo, Manila','male',NULL,'09/21/1999',4,NULL,'vincel',3,'2r0p12n','2018-08-22'),(51,'Homer','Cadena','homer.keid@gmail.com','123456789',4,NULL,5,'+639123214567',NULL,NULL,NULL,NULL,NULL,'Active','homiecadie',NULL,NULL,NULL),(52,'Danielle Nicole','Casadores','Casadores@gmail.com','54321',4,NULL,NULL,'+63909123432',NULL,NULL,NULL,NULL,NULL,'Inactive','Chawot',NULL,NULL,NULL),(53,'Rafh','Pabusta','Raf@gmail.com','32145',4,NULL,6,'+63909654567768',NULL,NULL,NULL,NULL,NULL,'Active','Rafhbeh',NULL,NULL,NULL),(54,'Matt Jerome','Santos','joshuaburnay@gmail.com',NULL,2,NULL,6,NULL,'Marikina City','male',NULL,'09/20/1988',4,NULL,'Mattaba',4,'55p7t1d','2018-08-22'),(55,'Juan','Dela Cruz','jethrosamson3@gmail.com',NULL,2,NULL,NULL,NULL,'Muntinlupa City','male',NULL,'04/21/1988',4,NULL,'',3,'0FqDDaU','2018-08-22'),(56,'Jill Marie','Inocencio','rafhpabustan@gmail.com',NULL,2,NULL,5,NULL,'Makati City','female',NULL,'09/21/1997',4,NULL,'bading',5,'Xn7jVYD','2018-08-22');
+INSERT INTO `tbluser` VALUES (9,NULL,NULL,'admin','12345',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(36,'Joshua','Ganila','ganila@gmail.com','11234',4,NULL,NULL,'+639123456789',NULL,NULL,NULL,NULL,NULL,'Inactive','Flash',NULL,NULL,NULL),(37,'Jethro','Samson','jethro@gmail.com','221345',3,NULL,5,'+639089765432','El Pueblo A-120 Sta. Mesa Manila','male','Monday,Tuesday,Wednesday','08/02/2018',4,NULL,'Jethpogi',NULL,NULL,NULL),(51,'Homer','Cadena','homer.keid@gmail.com','123456789',4,NULL,5,'+639123214567',NULL,NULL,NULL,NULL,NULL,'Active','homiecadie',NULL,NULL,NULL),(52,'Danielle Nicole','Casadores','Casadores@gmail.com','54321',4,NULL,NULL,'+63909123432',NULL,NULL,NULL,NULL,NULL,'Inactive','Chawot',NULL,NULL,NULL),(53,'Rafh','Pabusta','Raf@gmail.com','32145',4,NULL,NULL,'+63909654567768',NULL,NULL,NULL,NULL,NULL,'Active','Rafhbeh',NULL,NULL,NULL),(57,'Vince ','Oreta','tlovince14@gmail.com',NULL,9,NULL,NULL,NULL,'Pasig City','male',NULL,'11/09/2008',4,NULL,'vincel',7,'Kcq2qG7',NULL),(58,'Mae','Doronila','johnortiz135@gmail.com',NULL,2,NULL,5,NULL,'Muntinlupa City','female',NULL,'11/09/2008',4,NULL,'Mae',8,'dArzzhu','2018-08-22'),(59,'Khalil','Khalifa','joshuaburnay@gmail.com',NULL,2,NULL,5,NULL,'Makati','female',NULL,'08/12/1998',4,NULL,'MiaK',8,'H4xg3DL','2018-08-24'),(60,'Josie','Rizal','johnortiz135@gmail.com',NULL,2,NULL,6,NULL,'Manila City','female',NULL,'03/13/1996',4,NULL,'JR',4,'9749e05','2018-08-24');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
