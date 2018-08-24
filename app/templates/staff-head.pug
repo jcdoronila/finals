@@ -13,6 +13,22 @@ block main
 			b  A-Team Fitness
 		// logo end
 		.top-menu
+			span#header_inbox_bar.dropdown
+				a.dropdown-toggle(data-toggle='dropdown', href='#')
+					i.fa.fa-bell
+					span.badge.bg-theme 1
+				ul.dropdown-menu.extended.inbox
+					li
+						p You have 1 new notification
+					li
+						a(href='/')
+							span.subject
+								span.from(style='margin:0;') System
+								span.time Just now
+							span.message
+								| Event at 7:30AM Tomorrow
+					li
+						a(href='/') See all pending request
 			ul.nav.pull-right.top-menu
 				li
 					a(href='/logout')
