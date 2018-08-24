@@ -139,9 +139,9 @@ block main
 											.form-group
 												label.control-label Enter Code
 												input.form-control(type='text' name='newcode')
-												input#id(type='text' name='newid' )
-												input#thedate(type='text' name='currdate')
-												input#code(type='text' name='codenow')
+												input.hidden#id(type='text' name='newid' )
+												input.hidden#thedate(type='text' name='currdate')
+												input.hidden#code(type='text' name='codenow')
 
 							.modal-footer
 								button.btn.btn-default(type='button', data-dismiss='modal') Close
