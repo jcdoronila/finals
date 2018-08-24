@@ -21,30 +21,25 @@ block main
                         i.fa.fa-user
                         |  Name
                       th
-                        i.fa.fa-phone
-                        |  Contact
-                      th
                         i.fa.fa-bookmark
                         |  Membership
                       th
                         i.fa.fa-edit
                         |  Action
                   tbody
-                    tr
-                      td.hidden-phone 
-                      td  09999888776
-                      td
-                        span.label.label-warning Gold
-                        |  - Interbranch
-                      td
-                        button#freeze.btn.btn-primary.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Freeze Account')
-                          i.fa.fa-snowflake
-                        button#edit.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Edit Account')
-                          i.fa.fa-edit
-                        button#train.btn.btn-warning.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Assign Trainer')
-                          i.fa.fa-dumbbell
-                        button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Suspend Account')
-                          i.fa.fa-exclamation-circle
+                    each br in intb
+                      tr
+                        td.hidden-phone  #{br.userfname} #{br.userlname}
+                        td #{br.memclassname}-#{br.membershipname}   
+                        td
+                          button#freeze.btn.btn-primary.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Freeze Account')
+                            i.fa.fa-snowflake
+                          button#edit.btn.btn-success.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Edit Account')
+                            i.fa.fa-edit
+                          button#train.btn.btn-warning.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Assign Trainer')
+                            i.fa.fa-dumbbell
+                          button#del.btn.btn-danger.btn-xs(data-toggle='popover', data-trigger='hover', data-placement='top', data-content='Suspend Account')
+                            i.fa.fa-exclamation-circle
                         
           
     // MODAL ADD MEMBER

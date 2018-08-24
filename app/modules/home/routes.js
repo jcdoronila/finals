@@ -738,7 +738,7 @@ router.get('/', indexController);
 router.post('/pending/update', (req, res) => {
     
   if(req.body.newcode===req.body.codenow)
-     db.query("UPDATE tbluser SET  signdate=?,usertype=2,userpassword=123 WHERE userid=?",[req.body.currdate,req.body.newid],(err, results, fields)=>{
+     db.query("UPDATE tbluser SET  signdate=?,usertype=2,userpassword=12345 WHERE userid=?",[req.body.currdate,req.body.newid],(err, results, fields)=>{
        if (err)
          console.log(err);
        else{
@@ -760,6 +760,16 @@ function viewReg(req, res, next){
     return next();
   })
 }
+
+//view of regular interbranch members
+function viewInt(req, res, next){
+  db.query('select u.userfname,u.userlname ,mems.memrateid,ct.membershipname,cl.memclassname from tbluser u inner join tblmemrates mems ON u.memrateid=mems.memrateid inner join tblcat ct ON mems.memcat=ct.membershipID inner join tblmemclass cl ON mems.memclass= cl.memclassid where usertype=2 and u.branch IS NULL',function(err, results, fields){
+    if(err) return res.send(err);
+    req.viewInt = results;
+    return next();
+  })
+}
+
 
 
 //A-TEAM FITNESS FUNCTIONS
@@ -840,7 +850,7 @@ function regular(req,res){
     res.render('admin/transactions/views/t-regular', {regs: req.viewReg});
 }
 function Interregular(req,res){
-    res.render('admin/transactions/views/t-interregular');
+    res.render('admin/transactions/views/t-interregular',{intb: req.viewInt});
 }
 
 
@@ -873,7 +883,7 @@ router.get('/payment', payment);
 router.get('/pending',viewUpdate,viewPend, pending);
 router.get('/personal', personal);
 router.get('/regular',viewReg,regular) ;
-router.get('/interregular',Interregular);
+router.get('/interregular',viewInt ,Interregular);
 /**
  * Here we just export said router on the 'index' property of this module.
  */
