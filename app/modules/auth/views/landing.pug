@@ -173,7 +173,7 @@ html(lang='en')
                         select.form-control(name='membership')
                           each ct in cats
                             option.hidden Select Membership... 
-                            option(value='' + ct.memrateid) #{ct.memclassname} - #{ct.membershipname} (#{ct.memperiod} Days)
+                            option(value='' + ct.memrateid) #{ct.memclassname} - #{ct.membershipname} (#{ct.memperiod} MONTHS)
                   //- .row
                   //-   .col-md-5
                   //-     .form-group
