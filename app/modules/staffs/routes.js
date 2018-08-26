@@ -6,6 +6,26 @@ var indexController = require('./controllers/index');
 router.use(authMiddleware.staffHasAuth);
 router.get('/', indexController);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //LOGOUT
 function logout(req, res){
     res.render('auth/views/landing');

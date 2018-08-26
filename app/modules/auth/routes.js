@@ -75,8 +75,11 @@ function viewBranch(req, res, next){
 
 
 loginRouter.route('/')
-    .get(authMiddleware.adminNoAuth,viewSpecial,viewBranch, viewHie,viewMembership, (req, res) => {
-        res.render('auth/views/landing', {drop: req.viewHie, specs: req.viewSpecial, bras: req.viewBranch, cats:req.viewMembership});
+    .get(authMiddleware.adminNoAuth, viewSpecial, viewBranch, viewHie,viewMembership, (req, res) => {
+        res.render('auth/views/landing', {  drop: req.viewHie, 
+                                            specs: req.viewSpecial, 
+                                            bras: req.viewBranch, 
+                                            cats:req.viewMembership});
     })
     // .get(authMiddleware.trainerNoAuth, (req, res) => {
     //     res.render('auth/views/landing', req.query);
@@ -133,27 +136,27 @@ loginRouter.route('/')
                 console.log(req.session);
                 return res.redirect('/');
             }
-                else if (user.usertype == 3)
-                {
-                    delete user.password;
-                    req.session.trainer = user;
-                    console.log(req.session);
-                    return res.redirect('/trainer');
-                }
-                    else if (user.usertype == 2)
-                    {
-                        delete user.password;
-                        req.session.member = user;
-                        console.log(req.session);
-                        return res.redirect('/member');
-                    }
-                        else if (user.usertype == 4)
-                        {
-                            delete user.password;
-                            req.session.staff = user;
-                            console.log(req.session);
-                            return res.redirect('/staffs');
-                        }
+            else if (user.usertype == 3)
+            {
+                delete user.password;
+                req.session.trainer = user;
+                console.log(req.session);
+                return res.redirect('/trainer');
+            }
+            else if (user.usertype == 2)
+            {
+                delete user.password;
+                req.session.member = user;
+                console.log(req.session);
+                return res.redirect('/member');
+            }
+            else if (user.usertype == 4)
+            {
+                delete user.password;
+                req.session.staff = user;
+                console.log(req.session);
+                return res.redirect('/staffs');
+            }
 
 
             // if (user.strPassword == req.body.password || user.strType == "admin") res.redirect('/login?incorrect');
