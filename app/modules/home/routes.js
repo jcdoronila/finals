@@ -738,7 +738,7 @@ router.get('/', indexController);
 router.post('/pending/update', (req, res) => {
     
   if(req.body.newcode===req.body.codenow)
-     db.query("UPDATE tbluser SET  signdate=?,usertype=2,userpassword=12345 WHERE userid=?",[req.body.currdate,req.body.newid],(err, results, fields)=>{
+     db.query("UPDATE tbluser SET  signdate=CURDATE(),usertype=2,userpassword=12345 WHERE userid=?",[req.body.newid],(err, results, fields)=>{
        if (err)
          console.log(err);
        else{
