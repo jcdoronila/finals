@@ -750,7 +750,7 @@ router.post('/pending/update',useraddid ,(req, res) => {
     
   if(req.body.newcode===req.body.codenow)
      db.query("UPDATE tbluser SET  signdate=CURDATE(),usertype=2,userpassword=12345 WHERE userid=?",[req.body.newid],(err, results, fields)=>{
-      db.query("UPDATE tbluser u inner join tblmemrates mems ON u.memrateid=mems.memrateid inner join tblcat ct ON mems.memcat=ct.membershipID inner join tblmemclass cl ON mems.memclass= cl.memclassid SET u.expiry = case when cl.memclassname = 'BRONZE' then curdate() + interval 1 MONTH when cl.memclassname = 'SILVER' then curdate() + interval 6 MONTH when cl.memclassname = 'GOLD' then curdate() + interval 12 MONTH END where usertype=2 and userid=?",[req.body.newid],(err, results, fields)=>{
+      db.query("UPDATE tbluser u inner join tblmemrates mems ON u.memrateid=mems.memrateid inner join tblcat ct ON mems.memcat=ct.membershipID inner join tblmemclass cl ON mems.memclass= cl.memclassid SET u.expiry = case when cl.memclassid = mems.memclass then curdate() + interval mems.memperiod MONTH END where usertype=2 and userid=?",[req.body.newid],(err, results, fields)=>{
        if (err)
          console.log(err);
        else{
