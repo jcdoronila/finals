@@ -270,9 +270,9 @@ router.post('/branch',addid, (req, res) => {
         });
 
 
-//function addid
+//function branchaddid
 function addid(req, res, next){
-  db.query('SELECT (branchID+1)id FROM tblbranch ORDER BY branchID DESC LIMIT 1  ',function(err, results, fields){
+  db.query('   ',function(err, results, fields){
     if(err) return res.send(err)
     req.newid=results[0].id
     console.log('puta')
@@ -730,21 +730,34 @@ function viewUpdate(req, res,next){
        })
 };
    
+//function useraddid
+function useraddid(req, res, next){
+  db.query('SELECT (userid+1)id FROM tbluser ORDER BY userid DESC LIMIT 1 ',function(err, results, fields){
+    if(err) return res.send(err)
+    req.newuserid=results[0].id
+    console.log('puta')
+    console.log(req.newuserid)
+    return next();
+    })
+}
+
 
 //update of pending to regular
 var indexController = require('./controllers/index');
 router.get('/', indexController);
 
-router.post('/pending/update', (req, res) => {
+router.post('/pending/update',useraddid ,(req, res) => {
     
   if(req.body.newcode===req.body.codenow)
      db.query("UPDATE tbluser SET  signdate=CURDATE(),usertype=2,userpassword=12345 WHERE userid=?",[req.body.newid],(err, results, fields)=>{
+      db.query("UPDATE tbluser u inner join tblmemrates mems ON u.memrateid=mems.memrateid inner join tblcat ct ON mems.memcat=ct.membershipID inner join tblmemclass cl ON mems.memclass= cl.memclassid SET u.expiry = case when ct.membershipname = 'BRONZE' then curdate() + interval 1 MONTH when ct.membershipname = 'SILVER' then curdate() + interval 6 MONTH when ct.membershipname = 'GOLD' then curdate() + interval 12 MONTH END where usertype=2 and userid=?",[req.newuserid],(err, results, fields)=>{
        if (err)
          console.log(err);
        else{
          res.redirect('/pending');
        }
        });
+      });
   else{
     res.redirect('/pending/none');
   } 
