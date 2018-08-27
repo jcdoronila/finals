@@ -7,13 +7,13 @@ block main
         .content-panel(style="padding:30px; height:470px!important;")
           center
             img(src="../../../../assets/img/ui-sherman.jpg", alt="")
-            h4
-              b Homer Cadena
-            a
-              p(style="position:relative; bottom:10px;") Edit
-          br
-          br
-          h4 
+            each pr in profs              
+              h4 #{pr.userfname} #{pr.userlname}
+              a
+                p(style="position:relative; bottom:10px;") Edit
+              br
+              br
+              h4 
             i.fa.fa-dumbbell(style="margin-right: 10px;")
             | Personal Information
           hr

@@ -3,7 +3,7 @@ extends ./mem-sub-head
 block main	
 	#navbar-hidden
 		.container
-			a.icon(href='/member/dashboard')
+			a.icon(href='/member')
 				img.img-circle.xs(src='../../assets/img/icon.png', style='border:3px solid white;', alt='')
 				b(style='font-size:15pt;margin-left: 10px; letter-spacing: 1px;') A-Team Fitness
 			span#header_inbox_bar.dropdown
@@ -23,24 +23,25 @@ block main
 					li
 						a(href='/') See all pending request
 			div(style='float:right')
-				span.sm(style='font-size: 12pt;')
-					| Hello, 
-					b Rafhael
-				span.dropdown
-					img.img-circle.dropdown-toggle(data-toggle='dropdown', src='/assets/img/ui-zac.jpg', alt='')
-					ul.dropdown-menu.extended.tasks-bar(style='z-index:2000; position:absolute; top:30px;')
-						li
-							a(href='/')
-								.task-info
-									.desc
-										span.li_pen
-										| Edit Profile
-						li
-							a(href='/logout')
-								.task-info
-									.desc
-										span.li_lock
-										| Logout
+				each pr in profs
+					span.sm(style='font-size: 12pt;')
+						| Hello, 
+						b #{pr.userfname} #{pr.userlname}
+					span.dropdown
+						img.img-circle.dropdown-toggle(data-toggle='dropdown', src='/assets/img/ui-zac.jpg', alt='')
+						ul.dropdown-menu.extended.tasks-bar(style='z-index:2000; position:absolute; top:30px;')
+							li
+								a(href='/')
+									.task-info
+										.desc
+											span.li_pen
+											| Edit Profile
+							li
+								a(href='/logout')
+									.task-info
+										.desc
+											span.li_lock
+											| Logout
 	#navbar
 		.container
 			a(href='/member/profile')

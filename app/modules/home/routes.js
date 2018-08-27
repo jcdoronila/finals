@@ -251,6 +251,17 @@ function viewDiscount(req, res, next){
   })
 }
 
+//function branchaddid
+function addid(req, res, next){
+  db.query('SELECT (branchID+1)id FROM tblbranch ORDER BY branchID DESC LIMIT 1',function(err, results, fields){
+    if(err) return res.send(err)
+    req.newid=results[0].id
+    console.log('puta')
+    console.log(req.newid)
+    return next();
+    })
+}
+
 //insert branch
 var indexController = require('./controllers/index');
 router.get('/', indexController);
@@ -258,7 +269,7 @@ router.get('/', indexController);
 router.post('/branch',addid, (req, res) => {
     
     db.query("INSERT INTO tblbranch ( branchname,branchstreetnum,branchstreetname,branchcity,user) VALUES (?, ?, ?, ?, ?)",[req.body.branchname, req.body.stnum, req.body.st, req.body.city,req.body.user],(err, results, fields)=>{
-        db.query("UPDATE tbluser SET branch=?,statusfront='Active'  WHERE userid=?",[req.newid, req.body.user],(err, results, fields)=>{  
+        db.query("UPDATE tbluser SET branch=?,statusfront='Active' WHERE userid=?",[req.newid, req.body.user],(err, results, fields)=>{  
           if (err)
             console.log(err);
           else{
@@ -270,16 +281,7 @@ router.post('/branch',addid, (req, res) => {
         });
 
 
-//function branchaddid
-function addid(req, res, next){
-  db.query('   ',function(err, results, fields){
-    if(err) return res.send(err)
-    req.newid=results[0].id
-    console.log('puta')
-    console.log(req.newid)
-    return next();
-    })
-}
+
 
 //edit branch
 var indexController = require('./controllers/index');
@@ -763,7 +765,6 @@ router.post('/pending/update',useraddid ,(req, res) => {
   } 
       
  });
-
 
 //view of regular exclusive members
 function viewReg(req, res, next){
