@@ -680,7 +680,7 @@ function specs(req,res){
     res.render('admin/maintenance/views/m-specialization',{specials: req.viewSpecial});
 }
 function staff(req,res){
-    res.render('admin/maintenance/views/m-staff', {staffs: req.viewStaff});
+    res.render('admin/maintenance/views/m-staff', {staffs: req.viewStaff} );
 }
 function trainer(req,res){
     res.render('admin/maintenance/views/m-trainer',{drops: req.viewbranchdrop,spes: req.viewspecialdrop, trains: req.viewTrainer});
