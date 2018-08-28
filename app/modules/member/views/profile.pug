@@ -2,11 +2,11 @@ include ../../../templates/mem-head
 block main   
 
   .container
-    section.wrapper(style='margin-top:15px;')
+    section.wrapper(style='margin-top:15px;')    
       .col-md-5
         .content-panel(style="padding:30px; height:470px!important;")
           center
-            img(src="../../../../assets/img/ui-sherman.jpg", alt="")
+            img.img-circle(src="../../../../assets/img/ui-sherman.jpg", alt="")
             each pr in profs              
               h4 #{pr.userfname} #{pr.userlname}
               a
