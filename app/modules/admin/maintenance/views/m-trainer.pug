@@ -72,11 +72,11 @@ block main
                         .input-group-addon Gender:
                         label.radio
                           | Male
-                          input(type='radio', checked='', name='gen' value='male')
+                          input(type='radio', checked='', name='gen' value='Male')
                           span.dot
                         label.radio
                           | Female
-                          input(type='radio', name='gen' value='female')
+                          input(type='radio', name='gen' value='Female')
                           span.dot
                     .col-md-6
                       .form-group
@@ -248,21 +248,25 @@ block main
                         .input-group-addon Gender:
                         label.radio
                           | Male
-                          input(type='radio', checked='', name='gen' value='male')
+                          input(type='radio', checked='', name='gen' value='Male')
                           span.dot
                         label.radio
                           | Female
-                          input(type='radio', name='gen' value='female')
+                          input(type='radio', name='gen' value='emale')
                           span.dot
                     .col-md-6
                       .form-group
                         label.control-label Date of Birth
                         input#bday.date.form-control(type='text' name='bday')
                   .row
-                    .col-md-12
+                    .col-md-8
                       .form-group
-                        label.control-label Address
-                        input#addr.form-control(type='text' name='addr')
+                        label.control-label Street Number and Name 
+                        input.form-control(type='text' name='stname')
+                    .col-md-4
+                      .form-group
+                        label.control-label City
+                        input.form-control(type='text' name='city')
                   .row
                     .col-md-6
                       .form-group
@@ -403,9 +407,6 @@ script.
 
     $('#editmodal').on('show.bs.modal', function(event){
         var button = $(event.relatedTarget)      
-       
-        
-
         var mob = button.data('mob')
         var bday = button.data('bday')
         var addr= button.data('addr')
@@ -430,14 +431,7 @@ script.
 
     $('#deletemodal').on('show.bs.modal', function(event){
         var button = $(event.relatedTarget)      
-       
-        
-
         var id = button.data('id')
-
         let modal = $(this)  
-
-
         modal.find('.modal-body #id').val(` ${id}`)
-
     }) 

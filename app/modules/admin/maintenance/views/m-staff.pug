@@ -25,12 +25,14 @@ block main
 											i.fa.fa-edit
 											|  Action	
 								tbody 
-									each st in staffs 
+									each st in staffs 		
 										tr 
 											td #{st.userfname} #{st.userlname}
 											td 
-												span.label.label-success
-													| #{st.statusfront}
+												if (st.statusfront == 'Active')												
+													span.label.label-success #{st.statusfront}
+												else if (st.statusfront == 'Inactive')												
+													span.label.label-danger #{st.statusfront}
 											td 
 												button.btn.btn-info.btn-xs(type='button', data-toggle='modal', data-target='#viewmodal' data-email=st.useremail data-mobile=st.usermobile)
 													i.fa.fa-search
@@ -208,10 +210,12 @@ block main
 
 include ../../../../templates/foot
 script.
-	$(document).ready(function()
-	$('#memdrop').addClass('active')
-	$('#staffs').addClass('active')
-	});
+	 $(document).ready(function(){
+		
+		$('#memdrop').addClass('active');
+		$('#staffs').addClass('active');
+		
+
 
 	$('#viewmodal').on('show.bs.modal', function(event){
 		let button = $(event.relatedTarget)     

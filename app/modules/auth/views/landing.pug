@@ -127,21 +127,25 @@ html(lang='en')
                         .input-group-addon Gender:
                         label.radio
                           | Male
-                          input(type='radio', checked='', name='gen' value='male')
+                          input(type='radio', checked='', name='gen' value='Male')
                           span.dot
                         label.radio
                           | Female
-                          input(type='radio', name='gen' value='female')
+                          input(type='radio', name='gen' value='Female')
                           span.dot
                     .col-md-6
                       .form-group
                         label.control-label Date of Birth
                         input.date.form-control(type='text' name='bday')
                   .row
-                    .col-md-12
+                    .col-md-8
                       .form-group
-                        label.control-label Address
-                        input.form-control(type='text' name='addr')
+                        label.control-label Street Number and Name 
+                        input.form-control(type='text' name='stname')
+                    .col-md-4
+                      .form-group
+                        label.control-label City
+                        input.form-control(type='text' name='city')
                   .row
                     .col-md-6
                       .form-group
