@@ -17,25 +17,19 @@ block main
                   i.fa.fa-search
         br
         br
-        each c in classes
-          .col-lg-4.col-md-4.col-sm-4.mb
-            .content-panel(style="background-color:gray; padding:0; color:white; padding-top: 20px;")
-              h3 #{c.classname}
-              h6(style="margin:0!important") SAT/SUN - 1:30PM-4:30PM
-              | TUE/FRI - 8:00AM-10:30AM
+        .col-lg-4.col-md-4.col-sm-4.mb
+          .content-panel.pn(style="background-color:gray; padding:0; color:white; padding-top: 20px;")
+            h3 KICK BOXING
+            h6(style="margin:0!important") SAT/SUN - 1:30PM-4:30PM
+            | TUE/FRI - 8:00AM-10:30AM
+            .btn-block.btn-primary(style="position:relative; top:25px; padding:5px; font-weight: bold;")
+              i.fa.fa-search(style="padding-right:10px; ")
+              | View
+            .content-panel(style="margin:0!important; height: 90px; color:#797979;padding:6px 10px; position:relative; width:100%;top:25px;box-shadow:none; border-radius:0;")
               br
-              br
-              br
-              .btn-block.btn-primary(style=" padding:5px; font-weight: bold;")
-                i.fa.fa-search(style="padding-right:10px; ")
-                | View
-              .content-panel(style="margin:0!important; color:#797979;padding:5px 10px; width:100%;box-shadow:none; border-radius:0;")
-                br
-                h6(style="margin:0!important;") 
-                  b Class Description:
-                | #{c.classdesc}
-                br
-                br
+              h6(style="margin:0!important;") 
+                b Class Description:
+              | Fighting types lang pwede mag-enroll dito mga deputa kayo haha emoji
       br
       br
       br
